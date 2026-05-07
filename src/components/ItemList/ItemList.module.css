@@ -1,0 +1,11 @@
+.listaProductos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    width: 100%;
+}
+
+.listaProductos li {
+    list-style: none;
+    margin: 10px;
+}

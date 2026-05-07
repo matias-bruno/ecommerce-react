@@ -1,0 +1,56 @@
+.formStyle { 
+    display: flex;
+    flex-direction: column;
+    max-width: 24rem;
+    margin: 3rem auto; 
+    padding: 1.5rem;
+    border: 1px solid #ddd; 
+    border-radius: 8px; 
+    gap: 16px;
+}
+.formStyle h3 {
+  margin-bottom: 20px;
+}
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.formGroup label {
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.formGroup input,
+.formGroup textarea {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.formGroup input:focus,
+.formGroup textarea:focus {
+  outline: none;
+  border-color: #2A7AE4;
+}
+
+.formStyle button {
+  width: 100%;
+  padding: 12px;
+
+  border: none;
+  border-radius: 6px;
+
+  background: #2A7AE4;
+  color: white;
+  font-size: 16px;
+
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.formStyle button:hover {
+  background: #1e5fc1;
+}

@@ -1,0 +1,48 @@
+/* reset */
+* {
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  box-sizing: border-box; /* border box fix */
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-primary);
+}
+
+li {
+  list-style: none;
+}
+
+/* End of reset code */
+body {
+  color: var(--color-text);
+  font-family: 'Raleway', sans-serif;
+  font-weight: 500;
+}
+
+main {
+  background-color: var(--color-bg);
+  padding: 10px;
+}
+
+:root {
+  --color-bg: #F5F5F5;
+  --color-text: #464646;
+  --color-primary: #2A7AE4;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
