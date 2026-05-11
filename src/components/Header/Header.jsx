@@ -10,7 +10,7 @@ const Header = () => {
                     <div className={styles.headerContent}>
                         {/* Aquí adentro de este enlace puede ir una imagen con el logo de la tienda */}
                         {/* Por ahora lo dejamos que diga mi E-commerce */}
-                        <Link className={styles.header__logo} to="/">Mi E-commerce</Link>
+                        <Link className={styles.header__logo} to="/">Mi E-Commerce</Link>
                         <nav>
                             <ul className={styles.header__menu}>
                                 {/* <li><Link className={styles.header__enlace} to="/login">Login</Link></li> */}
