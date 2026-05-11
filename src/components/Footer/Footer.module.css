@@ -1,4 +1,46 @@
-.footer__info_autor {
+.footer {
+    background-color: var(--color-bg-alt);
+    color: var(--color-text-alt);
+}
+
+.footerContent {
+    padding: 40px 20px;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.footerTitle {
+  color: #2A7AE4; 
+  margin-bottom: 15px;
+}
+
+.companyInfo {
+    flex: 1;
+    min-width: 300px;
+}
+
+.companyInfo p {
+    line-height: 1.7;
+}
+
+.teamSection {
+    flex: 2;
+    min-width: 300px;
     text-align: center;
-    padding: 32px;
+}
+
+.cardsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    justify-items: center;
+}
+
+.copy {
+    background-color: var(--color-surface);
+    color: var(--color-text);
+    text-align: center;
+    padding: 30px;
 }

@@ -1,0 +1,28 @@
+.card {
+  background-color: #1E293B;
+  padding: 15px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.memberImg {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.memberDetails h4 {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--color-primary);
+}
+
+.memberDetails p {
+    margin: 0;
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+}

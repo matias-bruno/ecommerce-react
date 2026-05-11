@@ -28,17 +28,22 @@ body {
   color: var(--color-text);
   font-family: 'Raleway', sans-serif;
   font-weight: 500;
+  background-color: var(--color-bg);
 }
 
 main {
-  background-color: var(--color-bg);
   padding: 10px;
 }
 
 :root {
   --color-bg: #F5F5F5;
+  --color-bg-alt: #0F172A;
   --color-text: #464646;
+  --color-text-alt: #F5F5F5;
   --color-primary: #2A7AE4;
+  --color-surface: #ffffff;
+  --color-border: #e5e7eb;
+  --color-text-muted: #bdc3c7
 }
 
 .container {
