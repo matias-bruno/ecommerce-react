@@ -31,16 +31,14 @@ body {
   background-color: var(--color-bg);
 }
 
-main {
-  padding: 10px;
-}
-
 :root {
   --color-bg: #F5F5F5;
   --color-bg-alt: #0F172A;
   --color-text: #464646;
   --color-text-alt: #F5F5F5;
   --color-primary: #2A7AE4;
+  --color-primary-hover: #1D4ED8;
+  --color-on-primary: #ffffff;
   --color-surface: #ffffff;
   --color-border: #e5e7eb;
   --color-text-muted: #bdc3c7

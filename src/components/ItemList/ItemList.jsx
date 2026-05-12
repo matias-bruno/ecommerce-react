@@ -9,9 +9,9 @@ const ItemList = ({ productos }) => {
                 productos.map( producto => (
                     <TarjetaProducto 
                         key={producto.id }
-                        nombre={producto.nombre}
-                        precio={producto.precio}
-                        imagen={producto.imagen}
+                        nombre={producto.name}
+                        precio={producto.price}
+                        imagen={producto.imageUrl}
                     />
                 ))
             }

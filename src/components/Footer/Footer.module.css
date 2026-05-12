@@ -1,6 +1,7 @@
 .footer {
     background-color: var(--color-bg-alt);
     color: var(--color-text-alt);
+    margin-top: 20px;
 }
 
 .footerContent {

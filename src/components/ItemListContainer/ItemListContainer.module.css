@@ -1,9 +1,10 @@
-.header-productos {
+.headerProductos {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px;
 }
-.header-productos__titulo {
-    font-size: 2rem;
+.headerProductos__titulo {
+    font-size: 1.5rem;
+    padding: 10px;
 }

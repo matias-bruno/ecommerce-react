@@ -1,0 +1,344 @@
+[
+    {
+        "id": 1,
+        "name": "Apple MacBook Pro 14 Inch Space Grey",
+        "price": 1999.99,
+        "stock": 24,
+        "description": "The MacBook Pro 14 Inch in Space Grey is a powerful and sleek laptop, featuring Apple's M1 Pro chip for exceptional performance and a stunning Retina display.",
+        "categorySlug": "laptops",
+        "imageUrl": "https://cdn.dummyjson.com/product-images/laptops/apple-macbook-pro-14-inch-space-grey/1.webp"
+    },
+    {
+        "id": 2,
+        "name": "Asus Zenbook Pro Dual Screen Laptop",
+        "price": 1799.99,
+        "stock": 45,
+        "description": "The Asus Zenbook Pro Dual Screen Laptop is a high-performance device with dual screens, providing productivity and versatility for creative professionals.",
+        "categorySlug": "laptops",
+        "imageUrl": "https://cdn.dummyjson.com/product-images/laptops/asus-zenbook-pro-dual-screen-laptop/1.webp"
+    },
+    {
+        "id": 3,
+        "name": "Huawei Matebook X Pro",
+        "price": 1399.99,
+        "stock": 75,
+        "description": "The Huawei Matebook X Pro is a slim and stylish laptop with a high-resolution touchscreen display, offering a premium experience for users on the go.",
+        "categorySlug": "laptops",
+        "imageUrl": "https://cdn.dummyjson.com/product-images/laptops/huawei-matebook-x-pro/1.webp"
+    },
+    {
+        "id": 4,
+        "name": "Lenovo Yoga 920",
+        "price": 1099.99,
+        "stock": 40,
+        "description": "The Lenovo Yoga 920 is a 2-in-1 convertible laptop with a flexible hinge, allowing you to use it as a laptop or tablet, offering versatility and portability.",
+        "categorySlug": "laptops",
+        "imageUrl": "https://cdn.dummyjson.com/product-images/laptops/lenovo-yoga-920/1.webp"
+    },
+    {
+        "id": 5,
+        "name": "New DELL XPS 13 9300 Laptop",
+        "price": 1499.99,
+        "stock": 74,
+        "description": "The New DELL XPS 13 9300 Laptop is a compact and powerful device, featuring a virtually borderless InfinityEdge display and high-end performance for various tasks.",
+        "categorySlug": "laptops",
+        "imageUrl": "https://cdn.dummyjson.com/product-images/laptops/new-dell-xps-13-9300-laptop/1.webp"
+    },
+    {
+        "id": 6,
+        "name": "Amazon Echo Plus",
+        "price": 99.99,
+        "stock": 61,
+        "description": "The Amazon Echo Plus is a smart speaker with built-in Alexa voice control. It features premium sound quality and serves as a hub for controlling smart home devices.",
+        "categorySlug": "mobile-accessories",
+        "imageUrl": "https://cdn.dummyjson.com/product-images/mobile-accessories/amazon-echo-plus/1.webp"
+    },
+    {
+        "id": 7,
+        "name": "Apple Airpods",
+        "price": 129.99,
+        "stock": 67,
+        "description": "The Apple Airpods offer a seamless wireless audio experience. With easy pairing, high-quality sound, and Siri integration, they are perfect for on-the-go listening.",
+        "categorySlug": "mobile-accessories",
+        "imageUrl": "https://cdn.dummyjson.com/product-images/mobile-accessories/apple-airpods/1.webp"
+    },
+    {
+        "id": 8,
+        "name": "Apple AirPods Max Silver",
+        "price": 549.99,
+        "stock": 59,
+        "description": "The Apple AirPods Max in Silver are premium over-ear headphones with high-fidelity audio, adaptive EQ, and active noise cancellation. Experience immersive sound in style.",
+        "categorySlug": "mobile-accessories",
+        "imageUrl": "https://cdn.dummyjson.com/product-images/mobile-accessories/apple-airpods-max-silver/1.webp"
+    },
+    {
+        "id": 9,
+        "name": "Apple Airpower Wireless Charger",
+        "price": 79.99,
+        "stock": 1,
+        "description": "The Apple AirPower Wireless Charger provides a convenient way to charge your compatible Apple devices wirelessly. Simply place your devices on the charging mat for effortless charging.",
+        "categorySlug": "mobile-accessories",
+        "imageUrl": "https://cdn.dummyjson.com/product-images/mobile-accessories/apple-airpower-wireless-charger/1.webp"
+    },
+    {
+        "id": 10,
+        "name": "Apple HomePod Mini Cosmic Grey",
+        "price": 99.99,
+        "stock": 27,
+        "description": "The Apple HomePod Mini in Cosmic Grey is a compact smart speaker that delivers impressive audio and integrates seamlessly with the Apple ecosystem for a smart home experience.",
+        "categorySlug": "mobile-accessories",
+        "imageUrl": "https://cdn.dummyjson.com/product-images/mobile-accessories/apple-homepod-mini-cosmic-grey/1.webp"
+    },
+    {
+        "id": 11,
+        "name": "Apple iPhone Charger",
+        "price": 19.99,
+        "stock": 31,
+        "description": "The Apple iPhone Charger is a high-quality charger designed for fast and efficient charging of your iPhone. Ensure your device stays powered up and ready to go.",
+        "categorySlug": "mobile-accessories",
+        "imageUrl": "https://cdn.dummyjson.com/product-images/mobile-accessories/apple-iphone-charger/1.webp"
+    },
+    {
+        "id": 12,
+        "name": "Apple MagSafe Battery Pack",
+        "price": 99.99,
+        "stock": 1,
+        "description": "The Apple MagSafe Battery Pack is a portable and convenient way to add extra battery life to your MagSafe-compatible iPhone. Attach it magnetically for a secure connection.",
+        "categorySlug": "mobile-accessories",
+        "imageUrl": "https://cdn.dummyjson.com/product-images/mobile-accessories/apple-magsafe-battery-pack/1.webp"
+    },
+    {
+        "id": 13,
+        "name": "Apple Watch Series 4 Gold",
+        "price": 349.99,
+        "stock": 33,
+        "description": "The Apple Watch Series 4 in Gold is a stylish and advanced smartwatch with features like heart rate monitoring, fitness tracking, and a beautiful Retina display.",
+        "categorySlug": "mobile-accessories",
+        "imageUrl": "https://cdn.dummyjson.com/product-images/mobile-accessories/apple-watch-series-4-gold/1.webp"
+    },
+    {
+        "id": 14,
+        "name": "Beats Flex Wireless Earphones",
+        "price": 49.99,
+        "stock": 50,
+        "description": "The Beats Flex Wireless Earphones offer a comfortable and versatile audio experience. With magnetic earbuds and up to 12 hours of battery life, they are ideal for everyday use.",
+        "categorySlug": "mobile-accessories",
+        "imageUrl": "https://cdn.dummyjson.com/product-images/mobile-accessories/beats-flex-wireless-earphones/1.webp"
+    },
+    {
+        "id": 15,
+        "name": "iPhone 12 Silicone Case with MagSafe Plum",
+        "price": 29.99,
+        "stock": 69,
+        "description": "The iPhone 12 Silicone Case with MagSafe in Plum is a stylish and protective case designed for the iPhone 12. It features MagSafe technology for easy attachment of accessories.",
+        "categorySlug": "mobile-accessories",
+        "imageUrl": "https://cdn.dummyjson.com/product-images/mobile-accessories/iphone-12-silicone-case-with-magsafe-plum/1.webp"
+    },
+    {
+        "id": 16,
+        "name": "Monopod",
+        "price": 19.99,
+        "stock": 48,
+        "description": "The Monopod is a versatile camera accessory for stable and adjustable shooting. Perfect for capturing selfies, group photos, and videos with ease.",
+        "categorySlug": "mobile-accessories",
+        "imageUrl": "https://cdn.dummyjson.com/product-images/mobile-accessories/monopod/1.webp"
+    },
+    {
+        "id": 17,
+        "name": "Selfie Lamp with iPhone",
+        "price": 14.99,
+        "stock": 58,
+        "description": "The Selfie Lamp with iPhone is a portable and adjustable LED light designed to enhance your selfies and video calls. Attach it to your iPhone for well-lit photos.",
+        "categorySlug": "mobile-accessories",
+        "imageUrl": "https://cdn.dummyjson.com/product-images/mobile-accessories/selfie-lamp-with-iphone/1.webp"
+    },
+    {
+        "id": 18,
+        "name": "Selfie Stick Monopod",
+        "price": 12.99,
+        "stock": 11,
+        "description": "The Selfie Stick Monopod is a extendable and foldable device for capturing the perfect selfie or group photo. Compatible with smartphones and cameras.",
+        "categorySlug": "mobile-accessories",
+        "imageUrl": "https://cdn.dummyjson.com/product-images/mobile-accessories/selfie-stick-monopod/1.webp"
+    },
+    {
+        "id": 19,
+        "name": "TV Studio Camera Pedestal",
+        "price": 499.99,
+        "stock": 15,
+        "description": "The TV Studio Camera Pedestal is a professional-grade camera support system for smooth and precise camera movements in a studio setting. Ideal for broadcast and production.",
+        "categorySlug": "mobile-accessories",
+        "imageUrl": "https://cdn.dummyjson.com/product-images/mobile-accessories/tv-studio-camera-pedestal/1.webp"
+    },
+    {
+        "id": 20,
+        "name": "iPhone 5s",
+        "price": 199.99,
+        "stock": 25,
+        "description": "The iPhone 5s is a classic smartphone known for its compact design and advanced features during its release. While it's an older model, it still provides a reliable user experience.",
+        "categorySlug": "smartphones",
+        "imageUrl": "https://cdn.dummyjson.com/product-images/smartphones/iphone-5s/1.webp"
+    },
+    {
+        "id": 21,
+        "name": "iPhone 6",
+        "price": 299.99,
+        "stock": 60,
+        "description": "The iPhone 6 is a stylish and capable smartphone with a larger display and improved performance. It introduced new features and design elements, making it a popular choice in its time.",
+        "categorySlug": "smartphones",
+        "imageUrl": "https://cdn.dummyjson.com/product-images/smartphones/iphone-6/1.webp"
+    },
+    {
+        "id": 22,
+        "name": "iPhone 13 Pro",
+        "price": 1099.99,
+        "stock": 56,
+        "description": "The iPhone 13 Pro is a cutting-edge smartphone with a powerful camera system, high-performance chip, and stunning display. It offers advanced features for users who demand top-notch technology.",
+        "categorySlug": "smartphones",
+        "imageUrl": "https://cdn.dummyjson.com/product-images/smartphones/iphone-13-pro/1.webp"
+    },
+    {
+        "id": 23,
+        "name": "iPhone X",
+        "price": 899.99,
+        "stock": 37,
+        "description": "The iPhone X is a flagship smartphone featuring a bezel-less OLED display, facial recognition technology (Face ID), and impressive performance. It represents a milestone in iPhone design and innovation.",
+        "categorySlug": "smartphones",
+        "imageUrl": "https://cdn.dummyjson.com/product-images/smartphones/iphone-x/1.webp"
+    },
+    {
+        "id": 24,
+        "name": "Oppo A57",
+        "price": 249.99,
+        "stock": 19,
+        "description": "The Oppo A57 is a mid-range smartphone known for its sleek design and capable features. It offers a balance of performance and affordability, making it a popular choice.",
+        "categorySlug": "smartphones",
+        "imageUrl": "https://cdn.dummyjson.com/product-images/smartphones/oppo-a57/1.webp"
+    },
+    {
+        "id": 25,
+        "name": "Oppo F19 Pro Plus",
+        "price": 399.99,
+        "stock": 78,
+        "description": "The Oppo F19 Pro Plus is a feature-rich smartphone with a focus on camera capabilities. It boasts advanced photography features and a powerful performance for a premium user experience.",
+        "categorySlug": "smartphones",
+        "imageUrl": "https://cdn.dummyjson.com/product-images/smartphones/oppo-f19-pro-plus/1.webp"
+    },
+    {
+        "id": 26,
+        "name": "Oppo K1",
+        "price": 299.99,
+        "stock": 55,
+        "description": "The Oppo K1 series offers a range of smartphones with various features and specifications. Known for their stylish design and reliable performance, the Oppo K1 series caters to diverse user preferences.",
+        "categorySlug": "smartphones",
+        "imageUrl": "https://cdn.dummyjson.com/product-images/smartphones/oppo-k1/1.webp"
+    },
+    {
+        "id": 27,
+        "name": "Realme C35",
+        "price": 149.99,
+        "stock": 48,
+        "description": "The Realme C35 is a budget-friendly smartphone with a focus on providing essential features for everyday use. It offers a reliable performance and user-friendly experience.",
+        "categorySlug": "smartphones",
+        "imageUrl": "https://cdn.dummyjson.com/product-images/smartphones/realme-c35/1.webp"
+    },
+    {
+        "id": 28,
+        "name": "Realme X",
+        "price": 299.99,
+        "stock": 12,
+        "description": "The Realme X is a mid-range smartphone known for its sleek design and impressive display. It offers a good balance of performance and camera capabilities for users seeking a quality device.",
+        "categorySlug": "smartphones",
+        "imageUrl": "https://cdn.dummyjson.com/product-images/smartphones/realme-x/1.webp"
+    },
+    {
+        "id": 29,
+        "name": "Realme XT",
+        "price": 349.99,
+        "stock": 80,
+        "description": "The Realme XT is a feature-rich smartphone with a focus on camera technology. It comes equipped with advanced camera sensors, delivering high-quality photos and videos for photography enthusiasts.",
+        "categorySlug": "smartphones",
+        "imageUrl": "https://cdn.dummyjson.com/product-images/smartphones/realme-xt/1.webp"
+    },
+    {
+        "id": 30,
+        "name": "Samsung Galaxy S7",
+        "price": 299.99,
+        "stock": 67,
+        "description": "The Samsung Galaxy S7 is a flagship smartphone known for its sleek design and advanced features. It features a high-resolution display, powerful camera, and robust performance.",
+        "categorySlug": "smartphones",
+        "imageUrl": "https://cdn.dummyjson.com/product-images/smartphones/samsung-galaxy-s7/1.webp"
+    },
+    {
+        "id": 31,
+        "name": "Samsung Galaxy S8",
+        "price": 499.99,
+        "stock": 0,
+        "description": "The Samsung Galaxy S8 is a premium smartphone with an Infinity Display, offering a stunning visual experience. It boasts advanced camera capabilities and cutting-edge technology.",
+        "categorySlug": "smartphones",
+        "imageUrl": "https://cdn.dummyjson.com/product-images/smartphones/samsung-galaxy-s8/1.webp"
+    },
+    {
+        "id": 32,
+        "name": "Samsung Galaxy S10",
+        "price": 699.99,
+        "stock": 19,
+        "description": "The Samsung Galaxy S10 is a flagship device featuring a dynamic AMOLED display, versatile camera system, and powerful performance. It represents innovation and excellence in smartphone technology.",
+        "categorySlug": "smartphones",
+        "imageUrl": "https://cdn.dummyjson.com/product-images/smartphones/samsung-galaxy-s10/1.webp"
+    },
+    {
+        "id": 33,
+        "name": "Vivo S1",
+        "price": 249.99,
+        "stock": 50,
+        "description": "The Vivo S1 is a stylish and mid-range smartphone offering a blend of design and performance. It features a vibrant display, capable camera system, and reliable functionality.",
+        "categorySlug": "smartphones",
+        "imageUrl": "https://cdn.dummyjson.com/product-images/smartphones/vivo-s1/1.webp"
+    },
+    {
+        "id": 34,
+        "name": "Vivo V9",
+        "price": 299.99,
+        "stock": 82,
+        "description": "The Vivo V9 is a smartphone known for its sleek design and emphasis on capturing high-quality selfies. It features a notch display, dual-camera setup, and a modern design.",
+        "categorySlug": "smartphones",
+        "imageUrl": "https://cdn.dummyjson.com/product-images/smartphones/vivo-v9/1.webp"
+    },
+    {
+        "id": 35,
+        "name": "Vivo X21",
+        "price": 499.99,
+        "stock": 7,
+        "description": "The Vivo X21 is a premium smartphone with a focus on cutting-edge technology. It features an in-display fingerprint sensor, a high-resolution display, and advanced camera capabilities.",
+        "categorySlug": "smartphones",
+        "imageUrl": "https://cdn.dummyjson.com/product-images/smartphones/vivo-x21/1.webp"
+    },
+    {
+        "id": 36,
+        "name": "iPad Mini 2021 Starlight",
+        "price": 499.99,
+        "stock": 47,
+        "description": "The iPad Mini 2021 in Starlight is a compact and powerful tablet from Apple. Featuring a stunning Retina display, powerful A-series chip, and a sleek design, it offers a premium tablet experience.",
+        "categorySlug": "tablets",
+        "imageUrl": "https://cdn.dummyjson.com/product-images/tablets/ipad-mini-2021-starlight/1.webp"
+    },
+    {
+        "id": 37,
+        "name": "Samsung Galaxy Tab S8 Plus Grey",
+        "price": 599.99,
+        "stock": 62,
+        "description": "The Samsung Galaxy Tab S8 Plus in Grey is a high-performance Android tablet by Samsung. With a large AMOLED display, powerful processor, and S Pen support, it's ideal for productivity and entertainment.",
+        "categorySlug": "tablets",
+        "imageUrl": "https://cdn.dummyjson.com/product-images/tablets/samsung-galaxy-tab-s8-plus-grey/1.webp"
+    },
+    {
+        "id": 38,
+        "name": "Samsung Galaxy Tab White",
+        "price": 349.99,
+        "stock": 92,
+        "description": "The Samsung Galaxy Tab in White is a sleek and versatile Android tablet. With a vibrant display, long-lasting battery, and a range of features, it offers a great user experience for various tasks.",
+        "categorySlug": "tablets",
+        "imageUrl": "https://cdn.dummyjson.com/product-images/tablets/samsung-galaxy-tab-white/1.webp"
+    }
+]

@@ -1,16 +1,22 @@
 import ItemList from '../ItemList/ItemList'
 import { useState, useEffect } from 'react'
+import Container from '../Container'
+import styles from './ItemListContainer.module.css'
 
-const ItemListContainer = ({ mensaje }) => {
+const ItemListContainer = ({ mensaje, categoria, cantidad }) => {
     const [productos, setProductos] = useState([]);
     const [error, setError] = useState(null);
     const [cargando, setCargando] = useState(true);
     useEffect(() => {
-        fetch('/data/productos.json')
+        fetch('/data/productos-tech.json')
             .then(respuesta => {
                 return respuesta.json();
             })
             .then(datos => {
+                if(categoria)
+                    datos = datos.filter( (p) => p.categorySlug === categoria);
+                if(cantidad)
+                    datos = datos.slice(0, cantidad);
                 setProductos(datos);
             })
             .catch(error => {
@@ -28,12 +34,12 @@ const ItemListContainer = ({ mensaje }) => {
         return <p>Error: {error}</p>;
     }
     return (
-        <>
-            <div className="header-productos">
-                <h2 className="header-productos__titulo">{mensaje}</h2>
+        <Container>
+            <div className={styles.headerProductos}>
+                <h2 className={styles.headerProductos__titulo}>{mensaje}</h2>
             </div>
             <ItemList productos={productos} />
-        </>
+        </Container>
     );
 }
 
