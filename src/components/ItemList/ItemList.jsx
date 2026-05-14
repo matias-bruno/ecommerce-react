@@ -8,7 +8,8 @@ const ItemList = ({ productos }) => {
             {
                 productos.map( producto => (
                     <TarjetaProducto 
-                        key={producto.id }
+                        key={producto.id}
+                        id={producto.id}
                         nombre={producto.name}
                         precio={producto.price}
                         imagen={producto.imageUrl}

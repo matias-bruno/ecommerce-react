@@ -5,7 +5,7 @@ const Home = () => {
     return (
         <>
             <Hero />
-            <ItemListContainer mensaje="Computadores portatiles" categoria="laptops" cantidad={4} />
+            <ItemListContainer mensaje="Computadores portátiles" categoria="laptops" cantidad={4} />
             <ItemListContainer mensaje="Celulares" categoria="smartphones" cantidad={4} />
         </>
         

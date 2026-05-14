@@ -14,8 +14,9 @@ const Header = () => {
                         <nav>
                             <ul className={styles.header__menu}>
                                 {/* <li><Link className={styles.header__enlace} to="/login">Login</Link></li> */}
+                                <li><Link className={styles.header_enlace} to="/">Inicio</Link></li>
                                 <li><Link className={styles.header__enlace} to="/productos">Productos</Link></li>
-                                <li><Link className={styles.header__enlace} to="/alta">Agregar Producto</Link></li>
+                                {/* <li><Link className={styles.header__enlace} to="/alta">Agregar Producto</Link></li> */}
                             </ul>
                         </nav>
                     </div>

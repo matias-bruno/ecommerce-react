@@ -2,8 +2,9 @@ import styles from './TarjetaProducto.module.css'
 import sinImagen from '../../assets/sinImagen.png'
 import FavoriteButton from '../FavoriteButton/FavoriteButton';
 import { useState } from 'react';
+import {Link} from 'react-router-dom';
 
-const TarjetaProducto = ({ nombre, precio, imagen }) => {
+const TarjetaProducto = ({ id, nombre, precio, imagen }) => {
 
     const [isFavorite, setIsFavorite] = useState(false);
 
@@ -17,7 +18,7 @@ const TarjetaProducto = ({ nombre, precio, imagen }) => {
                 <p className={styles.producto__precio}>
                     ${precio}
                 </p>
-                <a href="#" className={styles.producto__enlace}>Ver Producto</a>
+                <Link to={`/producto/${id}`} className={styles.producto__enlace}>Ver Producto</Link>
                 <FavoriteButton
                     isFavorite={isFavorite}
                     onToggle={() => setIsFavorite(!isFavorite)}
