@@ -7,13 +7,14 @@ const ItemList = ({ productos }) => {
             <ul className={styles.listaProductos}>
             {
                 productos.map( producto => (
-                    <TarjetaProducto 
-                        key={producto.id}
-                        id={producto.id}
-                        nombre={producto.name}
-                        precio={producto.price}
-                        imagen={producto.imageUrl}
-                    />
+                    <li key={producto.id}>
+                        <TarjetaProducto 
+                            id={producto.id}
+                            nombre={producto.name}
+                            precio={producto.price}
+                            imagen={producto.imageUrl}
+                        />
+                    </li>
                 ))
             }
             </ul>
