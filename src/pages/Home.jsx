@@ -1,4 +1,4 @@
-import Hero from './Hero/Hero'
+import Hero from '../components/Hero/Hero'
 import ItemListContainer from './ItemListContainer/ItemListContainer';
 
 const Home = () => {

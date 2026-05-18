@@ -1,10 +1,10 @@
 import {Routes, Route} from 'react-router-dom'
 import Layout from './components/Layout';
-import ItemListContainer from './components/ItemListContainer/ItemListContainer';
+import ItemListContainer from './pages/ItemListContainer/ItemListContainer';
 import Container from './components/Container';
-import FormularioContainer from './components/FormularioContainer';
-import Home from './components/Home';
-import DetalleProducto from './components/DetalleProducto/DetalleProducto';
+import FormularioContainer from './pages/FormularioContainer';
+import Home from './pages/Home';
+import DetalleProducto from './pages/DetalleProducto/DetalleProducto';
 
 
 function App() {

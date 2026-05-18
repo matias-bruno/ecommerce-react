@@ -1,6 +1,6 @@
-import ItemList from '../ItemList/ItemList'
+import ItemList from '../../components/ItemList/ItemList'
 import { useState, useEffect } from 'react'
-import Container from '../Container'
+import Container from '../../components/Container'
 import styles from './ItemListContainer.module.css'
 
 const ItemListContainer = ({ mensaje, categoria, cantidad }) => {

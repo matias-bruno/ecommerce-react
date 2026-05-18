@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import FormularioProducto from './FormularioProducto/FormularioProducto';
+import FormularioProducto from '../components/FormularioProducto/FormularioProducto';
 
 const FormularioContainer = () => {
     const [datosForm, setDatosForm] = useState({

@@ -1,4 +1,4 @@
-import Container from "../Container";
+import Container from "../../components/Container";
 import styles from './DetalleProducto.module.css';
 import {useState, useEffect} from 'react';
 import {useParams} from 'react-router-dom';

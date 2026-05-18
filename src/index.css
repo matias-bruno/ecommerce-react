@@ -19,6 +19,10 @@ a {
   color: var(--color-primary);
 }
 
+a:hover {
+  color: var(--color-primary-hover);
+}
+
 li {
   list-style: none;
 }

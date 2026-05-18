@@ -1,10 +1,10 @@
-import styles from './TarjetaProducto.module.css'
+import styles from './ProductCard.module.css'
 import sinImagen from '../../assets/sinImagen.png'
 import FavoriteButton from '../FavoriteButton/FavoriteButton';
 import { useState } from 'react';
 import {Link} from 'react-router-dom';
 
-const TarjetaProducto = ({ id, nombre, precio, imagen }) => {
+const ProductCard = ({ id, nombre, precio, imagen }) => {
 
     const [isFavorite, setIsFavorite] = useState(false);
 
@@ -26,4 +26,4 @@ const TarjetaProducto = ({ id, nombre, precio, imagen }) => {
     );
 }
 
-export default TarjetaProducto;
+export default ProductCard;

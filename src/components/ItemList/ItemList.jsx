@@ -1,4 +1,4 @@
-import TarjetaProducto from "../TarjetaProducto/TarjetaProducto";
+import ProductCard from "../ProductCard/ProductCard";
 import styles from "./ItemList.module.css";
 
 const ItemList = ({ productos }) => {
@@ -8,7 +8,7 @@ const ItemList = ({ productos }) => {
             {
                 productos.map( producto => (
                     <li key={producto.id}>
-                        <TarjetaProducto 
+                        <ProductCard 
                             id={producto.id}
                             nombre={producto.name}
                             precio={producto.price}
