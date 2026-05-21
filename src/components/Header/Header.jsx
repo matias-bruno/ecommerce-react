@@ -1,8 +1,12 @@
 import styles from './Header.module.css'
 import { Link } from 'react-router-dom'
 import Container from '../Container'
+import {useCart} from '../../context/CartContext'
 
 const Header = () => {
+    const { getCartQuantity } = useCart();  
+    const totalItems = getCartQuantity();
+
     return (
         <>
             <header className={styles.header}>
@@ -14,8 +18,13 @@ const Header = () => {
                         <nav>
                             <ul className={styles.header__menu}>
                                 {/* <li><Link className={styles.header__enlace} to="/login">Login</Link></li> */}
-                                <li><Link className={styles.header_enlace} to="/">Inicio</Link></li>
+                                <li><Link className={styles.header__enlace} to="/">Inicio</Link></li>
                                 <li><Link className={styles.header__enlace} to="/productos">Productos</Link></li>
+                                <li>
+                                    <Link className={styles.header__enlace} to="/carrito">
+                                        Carrito {totalItems > 0 && <span>{totalItems}</span>}
+                                    </Link>
+                                </li>
                                 {/* <li><Link className={styles.header__enlace} to="/alta">Agregar Producto</Link></li> */}
                             </ul>
                         </nav>

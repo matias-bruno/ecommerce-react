@@ -7,6 +7,7 @@ import {Link} from 'react-router-dom';
 const ProductCard = ({ id, nombre, precio, imagen }) => {
 
     const [isFavorite, setIsFavorite] = useState(false);
+    const toggleFavorite = () => setIsFavorite(!isFavorite);
 
     return (
         <div className={styles.producto}>
@@ -20,7 +21,7 @@ const ProductCard = ({ id, nombre, precio, imagen }) => {
             <Link to={`/producto/${id}`} className={styles.producto__enlace}>Ver Producto</Link>
             <FavoriteButton
                 isFavorite={isFavorite}
-                onToggle={() => setIsFavorite(!isFavorite)}
+                onToggle={toggleFavorite}
             />
         </div>
     );

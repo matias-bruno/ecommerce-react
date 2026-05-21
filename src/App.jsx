@@ -5,6 +5,7 @@ import Container from './components/Container';
 import FormularioContainer from './pages/FormularioContainer';
 import Home from './pages/Home';
 import DetalleProducto from './pages/DetalleProducto/DetalleProducto';
+import Carrito from './pages/Carrito/Carrito';
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route path="/productos" element={ <ItemListContainer mensaje={'Todos los productos'} /> } />
         <Route path="/alta" element={<FormularioContainer />} />
         <Route path="/producto/:id" element={<DetalleProducto />} />
+        <Route path="/carrito" element={<Carrito />} />
       </Route>
     </Routes>
   )

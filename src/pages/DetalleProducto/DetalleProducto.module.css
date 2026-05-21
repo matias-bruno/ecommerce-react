@@ -54,6 +54,7 @@
   cursor: pointer;
   width: 100%;
   max-width: 300px;
+  border-radius: 8px;
 }
 
 .productoDetalle__boton:hover {

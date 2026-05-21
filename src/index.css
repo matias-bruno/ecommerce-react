@@ -43,6 +43,7 @@ body {
   --color-primary: #2A7AE4;
   --color-primary-hover: #1D4ED8;
   --color-on-primary: #ffffff;
+  --color-secondary: #6B7280;
   --color-surface: #ffffff;
   --color-border: #e5e7eb;
   --color-text-muted: #bdc3c7
@@ -53,3 +54,7 @@ body {
   margin: 0 auto;
   padding: 0 16px;
 }
+
+/* * {
+  outline: 1px solid red;
+} */

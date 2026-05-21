@@ -1,7 +1,8 @@
 import styles from './Hero.module.css'
-import {Link} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 function Hero() {
+  const navigate = useNavigate();
   return (
     <section className={styles.hero}>
       <div className={styles.heroOverlay}>
@@ -13,7 +14,7 @@ function Hero() {
             para potenciar tu espacio digital.
           </p>
 
-          <Link className={styles.heroContentLink} to="/productos">Ver productos</Link>
+          <button onClick={() => navigate("/productos")} className={styles.heroContentButton}>Ver productos</button>
         </div>
       </div>
     </section>

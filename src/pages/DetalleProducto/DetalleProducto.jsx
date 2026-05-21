@@ -1,13 +1,18 @@
 import Container from "../../components/Container";
 import styles from './DetalleProducto.module.css';
-import {useState, useEffect} from 'react';
-import {useParams} from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { useCart } from "../../context/CartContext";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const DetalleProducto = () => {
     const { id } = useParams();
     const [producto, setProducto] = useState(null);
     const [error, setError] = useState(null);
     const [cargando, setCargando] = useState(true);
+    const { cart, addToCart } = useCart();
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetch('/data/productos-tech.json')
@@ -34,6 +39,22 @@ const DetalleProducto = () => {
         return <h2>Producto no encontrado.</h2>;
     }
 
+    const handleAddToCart = () => {
+        addToCart(producto);
+
+        // Mostramos un mensajito al usuario para mejorar la experiencia
+        Swal.fire({
+            toast: true,
+            position: "top-end",
+            icon: "success",
+            title: "Producto agregado",
+            showConfirmButton: false,
+            timer: 3000
+        });
+    }
+
+    const isInCart = () => cart.some(item => item.id === producto.id);
+
     return (
         <Container>
             <div className={styles.productoDetalle}>
@@ -44,7 +65,17 @@ const DetalleProducto = () => {
                     <h1>{producto.name}</h1>
                     <p className={styles.productoDetalle__precio}>{producto.price}</p>
                     <p className={styles.productoDetalle__descripcion}>{producto.description}</p>
-                    <button id="agregar-carrito" className={styles.productoDetalle__boton}>Agregar al Carrito</button>
+                    {
+                        isInCart() ? (
+                            <button onClick={() => navigate("/carrito")} className={styles.productoDetalle__boton}>
+                                Ir al carrito
+                            </button>
+                        ) : (
+                            <button onClick={handleAddToCart} className={styles.productoDetalle__boton}>
+                                Agregar al carrito
+                            </button>
+                        )
+                    }
                 </div>
             </div>
         </Container>
