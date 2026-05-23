@@ -11,7 +11,7 @@ const DetalleProducto = () => {
     const [producto, setProducto] = useState(null);
     const [error, setError] = useState(null);
     const [cargando, setCargando] = useState(true);
-    const { cart, addToCart } = useCart();
+    const { cart, addToCart, isInCart } = useCart();
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -53,8 +53,6 @@ const DetalleProducto = () => {
         });
     }
 
-    const isInCart = () => cart.some(item => item.id === producto.id);
-
     return (
         <Container>
             <div className={styles.productoDetalle}>
@@ -66,7 +64,7 @@ const DetalleProducto = () => {
                     <p className={styles.productoDetalle__precio}>{producto.price}</p>
                     <p className={styles.productoDetalle__descripcion}>{producto.description}</p>
                     {
-                        isInCart() ? (
+                        isInCart(producto.id) ? (
                             <button onClick={() => navigate("/carrito")} className={styles.productoDetalle__boton}>
                                 Ir al carrito
                             </button>

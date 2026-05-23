@@ -58,6 +58,8 @@ export const CartProvider = ({ children }) => {
         return cart.reduce((acc, item) => acc += item.price * item.quantity, 0)
     }
 
+    const isInCart = id => cart.some(item => item.id === id);
+
     return (
         <CartContext.Provider
             value={{ // Pasamos un objeto con todos los elementos
@@ -67,7 +69,8 @@ export const CartProvider = ({ children }) => {
                 removeFromCart,
                 clearCart,
                 getCartQuantity,
-                getCartTotal
+                getCartTotal,
+                isInCart
             }}
         >
             {children}
