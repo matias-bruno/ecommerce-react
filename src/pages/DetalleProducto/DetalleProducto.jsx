@@ -6,6 +6,9 @@ import { useCart } from "../../context/CartContext";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
+import { doc, getDoc } from 'firebase/firestore';
+import { db } from '../../firebase/config';
+
 const DetalleProducto = () => {
     const { id } = useParams();
     const [producto, setProducto] = useState(null);
@@ -15,20 +18,24 @@ const DetalleProducto = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch('/data/productos-tech.json')
-            .then(respuesta => {
-                return respuesta.json();
-            })
-            .then(datos => {
-                const productoEncontrado = datos.find((prod) => (prod.id == id))
-                setProducto(productoEncontrado);
-            })
-            .catch(error => {
+        const fetchProducto = async () => {
+            try {
+                const productoRef = doc(db, "productos", id);
+                const productoSnap = await getDoc(productoRef);
+                if (productoSnap.exists()) {
+                    setProducto({ ...productoSnap.data(), id: productoSnap.id });
+                } else {
+                    setError("Producto no encontrado");
+                }
+            } catch (error) {
                 console.error('¡Ups! Hubo un error:', error);
-            })
-            .finally(() => {
+                setError("Error al cargar el producto");
+            } finally {
                 setCargando(false);
-            })
+            }
+        };
+
+        fetchProducto();
     }, [id]);
 
     if (!producto) {

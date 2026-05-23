@@ -16,8 +16,7 @@ export const CartProvider = ({ children }) => {
     // Agregamos siempre de a uno
     const addToCart = (product) => {
         // Ver si ya está el producto en el carrito
-        const itemInCart = cart.find(item => item.id === product.id);
-        if (itemInCart) {
+        if (isInCart(product.id)) {
             // Solo actualizamos la cantidad
             const updatedCart = cart.map(item =>
                 item.id === product.id ?

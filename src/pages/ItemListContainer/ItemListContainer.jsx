@@ -3,28 +3,31 @@ import { useState, useEffect } from 'react'
 import Container from '../../components/Container'
 import styles from './ItemListContainer.module.css'
 
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '../../firebase/config';
+
 const ItemListContainer = ({ mensaje, categoria, cantidad }) => {
     const [productos, setProductos] = useState([]);
     const [error, setError] = useState(null);
     const [cargando, setCargando] = useState(true);
     useEffect(() => {
-        fetch('/data/productos-tech.json')
-            .then(respuesta => {
-                return respuesta.json();
-            })
-            .then(datos => {
-                if(categoria)
-                    datos = datos.filter( (p) => p.categorySlug === categoria);
-                if(cantidad)
-                    datos = datos.slice(0, cantidad);
-                setProductos(datos);
-            })
-            .catch(error => {
-                console.error('¡Ups! Hubo un error:', error);
-            })
-            .finally(() => {
-                setCargando(false);
-            })
+        const productosDB = collection(db, "productos")
+        getDocs(productosDB).then((resp) => {
+            let datos = resp.docs.map((doc) => {
+                return { ...doc.data(), id: doc.id }
+            });
+            if (categoria)
+                datos = datos.filter((p) => p.categorySlug === categoria);
+            if (cantidad)
+                datos = datos.slice(0, cantidad);
+            setProductos(datos);
+        })
+        .catch(error => {
+            console.error('¡Ups! Hubo un error:', error);
+        })
+        .finally(() => {
+            setCargando(false);
+        })
     }, []);
 
     if (cargando) {
