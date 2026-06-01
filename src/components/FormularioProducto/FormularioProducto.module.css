@@ -25,7 +25,8 @@
 }
 
 .formGroup input,
-.formGroup textarea {
+.formGroup textarea,
+.formGroup select {
   padding: 10px;
   border-radius: 6px;
   border: 1px solid #ccc;
@@ -33,7 +34,8 @@
 }
 
 .formGroup input:focus,
-.formGroup textarea:focus {
+.formGroup textarea:focus,
+.formGroup select:focus {
   outline: none;
   border-color: #2A7AE4;
 }
@@ -56,7 +58,7 @@
 .formStyle button:hover {
   background: #1e5fc1;
 }
-input, textarea {
+input, textarea, select {
     background-color: var(--color-bg);
     color: var(--color-text);
 }

@@ -1,15 +1,39 @@
-import {useState} from 'react';
+import { useState, useEffect, useRef } from 'react';
+import { collection, addDoc, getDocs } from 'firebase/firestore';
+import { db } from '../firebase/config';
+import Swal from "sweetalert2";
 import FormularioProducto from '../components/FormularioProducto/FormularioProducto';
 
 const FormularioContainer = () => {
-    const [datosForm, setDatosForm] = useState({
-        nombre: '',
-        precio: '',
-        stock: ''
-    });
+    const datosIniciales = {
+        name: '',
+        price: '',
+        stock: '',
+        description: '',
+        categorySlug: '',
+        imageUrl: ''
+    };
+    const [datosForm, setDatosForm] = useState(datosIniciales);
     const [imagenFile, setImagenFile] = useState(null);
+    const [categorias, setCategorias] = useState([]);
+    const fileInputRef = useRef(null);
+
+    // Traemos las categorias disponibles
+    useEffect(() => {
+        const categoriasDB = collection(db, "categories")
+        getDocs(categoriasDB).then((resp) => {
+            let datos = resp.docs.map((doc) => {
+                return { ...doc.data(), id: doc.id }
+            });
+            setCategorias(datos);
+        })
+            .catch(error => {
+                console.error('¡Ups! Hubo un error:', error);
+            });
+    }, [])
+
     const manejarCambio = (evento) => {
-        const {name, value} = evento.target;
+        const { name, value } = evento.target;
         setDatosForm({
             ...datosForm,
             [name]: value
@@ -20,7 +44,7 @@ const FormularioContainer = () => {
     };
     const manejarEnvio = async (evento) => {
         evento.preventDefault();
-        if(!imagenFile) {
+        if (!imagenFile) {
             alert("Por favor, selecciona una imagen para el producto.");
             return;
         }
@@ -36,18 +60,42 @@ const FormularioContainer = () => {
             });
             const datosImgBB = await respuestaImgBB.json();
 
-            if(datosImgBB.success) {
+            // Se guarda si la imagen se pudo subir
+            if (datosImgBB.success) {
                 console.log("Imagen subida con éxito. URL: ", datosImgBB.data.url);
                 const productoCompleto = {
                     ...datosForm,
-                    urlImagen: datosImgBB.data.url
+                    imageUrl: datosImgBB.data.url
                 }
                 console.log("Enviando los datos completos a la API: ", productoCompleto);
+
+                // Aquí se guarda en Firestore
+                const productsDB = collection(db, "products");
+                const docRef = await addDoc(productsDB, productoCompleto);
+                // Limpiar formulario
+                limpiarFormulario();
+                // Mostrar confirmación
+                Swal.fire({
+                    toast: true,
+                    position: "top-end",
+                    icon: "success",
+                    title: `Producto creado con id: ${docRef.id}`,
+                    showConfirmButton: false,
+                    timer: 3000
+                });
             }
         } catch (error) {
-            console.error("Error en el proceso de envío: ", error);
-            alert("Hubo un error al subir la imagen. Por favor, intenta de nuevo");
+            Swal.fire({
+                icon: "error",
+                title: "Error al guardar",
+                text: error.message
+            });
         }
+    }
+    const limpiarFormulario = () => {
+        setDatosForm(datosIniciales);
+        setImagenFile(null);
+        if (fileInputRef.current) fileInputRef.current.value = "";
     }
     return (
         <FormularioProducto
@@ -55,6 +103,8 @@ const FormularioContainer = () => {
             manejarCambio={manejarCambio}
             manejarEnvio={manejarEnvio}
             manejarCambioImagen={manejarCambioImagen}
+            categorias={categorias}
+            fileInputRef={fileInputRef}
         />
     );
 }

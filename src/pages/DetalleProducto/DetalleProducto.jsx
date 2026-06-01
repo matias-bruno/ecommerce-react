@@ -20,7 +20,7 @@ const DetalleProducto = () => {
     useEffect(() => {
         const fetchProducto = async () => {
             try {
-                const productoRef = doc(db, "productos", id);
+                const productoRef = doc(db, "products", id);
                 const productoSnap = await getDoc(productoRef);
                 if (productoSnap.exists()) {
                     setProducto({ ...productoSnap.data(), id: productoSnap.id });
@@ -68,7 +68,7 @@ const DetalleProducto = () => {
                 </div>
                 <div className={styles.productoDetalle__info}>
                     <h1>{producto.name}</h1>
-                    <p className={styles.productoDetalle__precio}>{producto.price}</p>
+                    <p className={styles.productoDetalle__precio}>${producto.price}</p>
                     <p className={styles.productoDetalle__descripcion}>{producto.description}</p>
                     {
                         isInCart(producto.id) ? (

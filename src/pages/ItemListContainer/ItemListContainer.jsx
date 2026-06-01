@@ -11,7 +11,7 @@ const ItemListContainer = ({ mensaje, categoria, cantidad }) => {
     const [error, setError] = useState(null);
     const [cargando, setCargando] = useState(true);
     useEffect(() => {
-        const productosDB = collection(db, "productos")
+        const productosDB = collection(db, "products")
         getDocs(productosDB).then((resp) => {
             let datos = resp.docs.map((doc) => {
                 return { ...doc.data(), id: doc.id }
@@ -29,7 +29,7 @@ const ItemListContainer = ({ mensaje, categoria, cantidad }) => {
             setCargando(false);
         })
     }, []);
-
+    // Todo: agregarle estilos cuando se muestra cargando o error
     if (cargando) {
         return <p>Cargando productos, por favor espere...</p>;
     }
