@@ -1,0 +1,90 @@
+.productsHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 2rem 0;
+}
+
+.btn {
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 10px;
+  transition: background-color 0.3s;
+}
+
+.btnNuevo {
+  padding: 0.9rem 1.8rem;
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+}
+
+.btnNuevo:hover {
+  background-color: var(--color-primary-hover);
+}
+
+.btnDanger {
+  background-color: var(--color-danger);
+  color: var(--color-on-primary);
+}
+
+.btnDanger:hover {
+  background-color: var(--color-danger-hover);
+}
+
+/* Tabla */
+.tableContainer {
+    overflow-x: auto;
+}
+
+.productsTable {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--color-surface);
+}
+
+.productsTable th, 
+.productsTable td {
+    padding: 12px;
+    border: 1px solid var(--color-border);
+    /* text-align: left; */
+    vertical-align: middle;
+}
+
+.productsTable th {
+    background-color: var(--color-bg-alt);
+    color: var(--color-text-alt);
+    font-weight: bold;
+}
+
+.productsTable img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.numeric {
+    text-align: right;
+}
+
+.truncate {
+  max-width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 768px) {
+  .productsHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .btnPrimary {
+    width: 100%;
+    text-align: center;
+  }
+}

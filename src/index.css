@@ -44,9 +44,12 @@ body {
   --color-primary-hover: #1D4ED8;
   --color-on-primary: #ffffff;
   --color-secondary: #6B7280;
+  --color-secondary-hover: #4B5563;
   --color-surface: #ffffff;
   --color-border: #e5e7eb;
-  --color-text-muted: #bdc3c7
+  --color-text-muted: #bdc3c7;
+  --color-danger: #ef4444;
+  --color-danger-hover:#dc2626;
 }
 
 .container {

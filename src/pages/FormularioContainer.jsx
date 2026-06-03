@@ -44,8 +44,14 @@ const FormularioContainer = () => {
     };
     const manejarEnvio = async (evento) => {
         evento.preventDefault();
+        // Hacemos que sea obligatorio incluir una imagen del producto
         if (!imagenFile) {
-            alert("Por favor, selecciona una imagen para el producto.");
+            Swal.fire({
+                icon: "warning",
+                title: "Imagen requerida",
+                text: "Debes seleccionar una imagen antes de crear el producto.",
+                confirmButtonText: "Entendido",
+            });
             return;
         }
         const apiKey = import.meta.env.VITE_IMGBB_API_KEY;
