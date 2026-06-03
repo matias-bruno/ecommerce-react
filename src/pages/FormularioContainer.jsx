@@ -1,8 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
-import { collection, addDoc, getDocs } from 'firebase/firestore';
+import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../firebase/config';
 import Swal from "sweetalert2";
 import FormularioProducto from '../components/FormularioProducto/FormularioProducto';
+import { useProductsContext } from '../context/ProductsContext.jsx';
 
 const FormularioContainer = () => {
     const datosIniciales = {
@@ -17,6 +18,7 @@ const FormularioContainer = () => {
     const [imagenFile, setImagenFile] = useState(null);
     const [categorias, setCategorias] = useState([]);
     const fileInputRef = useRef(null);
+    const { createProduct } = useProductsContext();
 
     // Traemos las categorias disponibles
     useEffect(() => {
@@ -75,17 +77,13 @@ const FormularioContainer = () => {
                 }
                 console.log("Enviando los datos completos a la API: ", productoCompleto);
 
-                // Aquí se guarda en Firestore
-                const productsDB = collection(db, "products");
-                const docRef = await addDoc(productsDB, productoCompleto);
-                // Limpiar formulario
+                await createProduct(productoCompleto);
                 limpiarFormulario();
-                // Mostrar confirmación
                 Swal.fire({
                     toast: true,
                     position: "top-end",
                     icon: "success",
-                    title: `Producto creado con id: ${docRef.id}`,
+                    title: "Producto creado con éxito",
                     showConfirmButton: false,
                     timer: 3000
                 });

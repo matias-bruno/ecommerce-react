@@ -1,49 +1,42 @@
 import Container from "../../components/Container";
 import styles from './DetalleProducto.module.css';
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useCart } from "../../context/CartContext";
-import { useNavigate } from "react-router-dom";
+import { useProductsContext } from "../../context/ProductsContext.jsx";
 import Swal from "sweetalert2";
-
-import { doc, getDoc } from 'firebase/firestore';
-import { db } from '../../firebase/config';
 
 const DetalleProducto = () => {
     const { id } = useParams();
     const [producto, setProducto] = useState(null);
     const [error, setError] = useState(null);
     const [cargando, setCargando] = useState(true);
-    const { cart, addToCart, isInCart } = useCart();
+    const { addToCart, isInCart } = useCart();
+    const { getProductById } = useProductsContext();
     const navigate = useNavigate();
 
     useEffect(() => {
         const fetchProducto = async () => {
             try {
-                const productoRef = doc(db, "products", id);
-                const productoSnap = await getDoc(productoRef);
-                if (productoSnap.exists()) {
-                    setProducto({ ...productoSnap.data(), id: productoSnap.id });
-                } else {
-                    setError("Producto no encontrado");
-                }
+                const productoCargado = await getProductById(id);
+                setProducto(productoCargado);
             } catch (error) {
                 console.error('¡Ups! Hubo un error:', error);
-                setError("Error al cargar el producto");
+                setError(error.message || "Error al cargar el producto");
             } finally {
                 setCargando(false);
             }
         };
 
         fetchProducto();
-    }, [id]);
+    }, [id, getProductById]);
 
-    if (!producto) {
+    if (cargando) {
         return <h2>Cargando detalle del producto...</h2>;
     }
 
-    if (!producto.id) {
-        return <h2>Producto no encontrado.</h2>;
+    if (error) {
+        return <h2>{error}</h2>;
     }
 
     const handleAddToCart = () => {
