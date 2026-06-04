@@ -1,4 +1,4 @@
-import { useState, useContext, createContext, useCallback } from 'react';
+import { useState, useContext, createContext, useEffect } from 'react';
 import { db } from '../firebase/config';
 import { collection, getDocs, doc, getDoc, addDoc, deleteDoc } from 'firebase/firestore';
 
@@ -14,28 +14,31 @@ export const useProductsContext = () => {
 
 export const ProductsProvider = ({ children }) => {
     const [products, setProducts] = useState([]);
-    const [loadingProducts, setLoadingProducts] = useState(false);
+    const [loadingProducts, setLoadingProducts] = useState(true);
     const [productsError, setProductsError] = useState(null);
 
-    const loadProducts = useCallback(async () => {
-        if (loadingProducts) return;
-        setLoadingProducts(true);
-        setProductsError(null);
+    useEffect(() => {
+        const loadProducts = async () => {
+            setLoadingProducts(true);
+            setProductsError(null);
 
-        try {
-            const productsRef = collection(db, 'products');
-            const resp = await getDocs(productsRef);
-            const datos = resp.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
-            setProducts(datos);
-        } catch (error) {
-            console.error('Error al cargar productos:', error);
-            setProductsError(error.message || 'No se pudieron cargar los productos.');
-        } finally {
-            setLoadingProducts(false);
-        }
-    }, [loadingProducts]);
+            try {
+                const productsRef = collection(db, 'products');
+                const resp = await getDocs(productsRef);
+                const datos = resp.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+                setProducts(datos);
+            } catch (error) {
+                console.error('Error al cargar productos:', error);
+                setProductsError(error.message || 'No se pudieron cargar los productos.');
+            } finally {
+                setLoadingProducts(false);
+            }
+        };
 
-    const getProductById = useCallback(async (id) => {
+        loadProducts();
+    }, []);
+
+    const getProductById = async (id) => {
         const productoExistente = products.find((product) => product.id === id);
         if (productoExistente) {
             return productoExistente;
@@ -46,7 +49,7 @@ export const ProductsProvider = ({ children }) => {
             return { ...productoSnap.data(), id: productoSnap.id };
         }
         throw new Error('Producto no encontrado');
-    }, [products]);
+    };
 
     const createProduct = async (newProduct) => {
         const productsCollection = collection(db, 'products');
@@ -67,7 +70,6 @@ export const ProductsProvider = ({ children }) => {
             products,
             loadingProducts,
             productsError,
-            loadProducts,
             getProductById,
             createProduct,
             deleteProduct

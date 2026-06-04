@@ -1,17 +1,10 @@
 import ItemList from '../../components/ItemList/ItemList'
-import { useEffect } from 'react'
 import Container from '../../components/Container'
 import styles from './ItemListContainer.module.css'
 import { useProductsContext } from '../../context/ProductsContext.jsx'
 
 const ItemListContainer = ({ mensaje, categoria, cantidad }) => {
-    const { products, loadingProducts, productsError, loadProducts } = useProductsContext();
-
-    useEffect(() => {
-        if (products.length === 0 && !loadingProducts) {
-            loadProducts();
-        }
-    }, [products.length, loadingProducts, loadProducts]);
+    const { products, loadingProducts, productsError } = useProductsContext();
 
     if (loadingProducts) {
         return <p>Cargando productos, por favor espere...</p>;

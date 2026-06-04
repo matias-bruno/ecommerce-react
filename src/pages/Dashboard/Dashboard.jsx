@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Swal from "sweetalert2";
 import styles from './Dashboard.module.css';
@@ -7,13 +6,7 @@ import { useProductsContext } from '../../context/ProductsContext.jsx';
 
 const Dashboard = () => {
     const navigate = useNavigate();
-    const { products, loadingProducts, productsError, loadProducts, deleteProduct } = useProductsContext();
-
-    useEffect(() => {
-        if (products.length === 0 && !loadingProducts) {
-            loadProducts();
-        }
-    }, [products.length, loadingProducts, loadProducts]);
+    const { products, loadingProducts, productsError, deleteProduct } = useProductsContext();
     const handleDelete = async (id) => {
         const result = await Swal.fire({
             title: "¿Confirma eliminar el producto?",

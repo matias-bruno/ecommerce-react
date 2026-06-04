@@ -10,13 +10,14 @@ const DetalleProducto = () => {
     const { id } = useParams();
     const [producto, setProducto] = useState(null);
     const [error, setError] = useState(null);
-    const [cargando, setCargando] = useState(true);
+    const [cargando, setCargando] = useState(false);
     const { addToCart, isInCart } = useCart();
     const { getProductById } = useProductsContext();
     const navigate = useNavigate();
 
     useEffect(() => {
         const fetchProducto = async () => {
+            setCargando(true);
             try {
                 const productoCargado = await getProductById(id);
                 setProducto(productoCargado);
@@ -29,7 +30,7 @@ const DetalleProducto = () => {
         };
 
         fetchProducto();
-    }, [id, getProductById]);
+    }, [id]);
 
     if (cargando) {
         return <h2>Cargando detalle del producto...</h2>;
@@ -37,6 +38,10 @@ const DetalleProducto = () => {
 
     if (error) {
         return <h2>{error}</h2>;
+    }
+
+    if (!producto) {
+        return <h2>Producto no encontrado</h2>;
     }
 
     const handleAddToCart = () => {
