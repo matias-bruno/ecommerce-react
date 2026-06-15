@@ -24,6 +24,15 @@
   background-color: var(--color-primary-hover);
 }
 
+.btnSecondary {
+  background-color: var(--color-secondary);
+  color: var(--color-on-primary);
+  margin-right: 5px;
+}
+
+.btnSecondary:hover {
+  background-color: var(--color-secondary-hover);
+}
 .btnDanger {
   background-color: var(--color-danger);
   color: var(--color-on-primary);
@@ -75,6 +84,38 @@
   text-overflow: ellipsis;
 }
 
+/* ── Modal overlay ── */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0,0,0,0.5);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 1000;
+}
+
+.modal {
+  position: relative;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  /* border-radius: var(--radius); */
+  padding: 2.25rem 2rem;
+  width: 100%;
+  max-width: 520px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
+}
+
+/* scrollbar del modal */
+.modal::-webkit-scrollbar       { width: 4px; }
+.modal::-webkit-scrollbar-track { background: transparent; }
+.modal::-webkit-scrollbar-thumb { background: var(--clr-border); border-radius: 4px; }
+
+/* Media queries para el diseño responsive */
 @media (max-width: 768px) {
   .productsHeader {
     flex-direction: column;

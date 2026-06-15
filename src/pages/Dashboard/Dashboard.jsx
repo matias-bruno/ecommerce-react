@@ -3,10 +3,32 @@ import Swal from "sweetalert2";
 import styles from './Dashboard.module.css';
 import Container from "../../components/Container";
 import { useProductsContext } from '../../context/ProductsContext.jsx';
+import { useState } from 'react';
+import FormContainer from '../FormContainer.jsx';
 
 const Dashboard = () => {
     const navigate = useNavigate();
     const { products, loadingProducts, productsError, deleteProduct } = useProductsContext();
+
+    const [productEditing, setProductEditing] = useState(null);
+    const [modalOpen, setModalOpen] = useState(false);
+
+    // Métodos necesarios para el estado de los formularios
+    const openAdd = () => {
+        setProductEditing(null);
+        setModalOpen(true);
+    };
+
+    const openEdit = (producto) => {
+        setProductEditing(producto);
+        setModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setModalOpen(false);
+        setProductEditing(null);
+    };
+
     const handleDelete = async (id) => {
         const result = await Swal.fire({
             title: "¿Confirma eliminar el producto?",
@@ -51,10 +73,24 @@ const Dashboard = () => {
             <div className={styles.productsHeader}>
                 <h1>Lista de productos</h1>
 
-                <button className={[styles.btn, styles.btnNuevo].join(' ')} onClick={() => navigate('/alta')}>
+                <button className={[styles.btn, styles.btnNuevo].join(' ')} onClick={openAdd}>
                     + Nuevo producto
                 </button>
+                {modalOpen && (
+                    // Este podría ser un componente también
+                    <div className={styles.overlay} onClick={closeModal}>
+                        <div className={styles.modal} onClick={ (e) =>  e.stopPropagation() }>
+                            <FormContainer
+                                closeModal={closeModal}
+                                productEditing={productEditing}
+                            />
+                        </div>
+                    </div>
+                )}
             </div>
+
+
+
             <div className={styles.tableContainer}>
                 <table className={styles.productsTable}>
                     <thead>
@@ -89,6 +125,9 @@ const Dashboard = () => {
                                     {producto.categorySlug}
                                 </td>
                                 <td>
+                                    <button className={[styles.btn, styles.btnSecondary].join(' ')} onClick={() => openEdit(producto)}>
+                                        Editar
+                                    </button>
                                     <button className={[styles.btn, styles.btnDanger].join(' ')} onClick={() => handleDelete(producto.id)}>
                                         Eliminar
                                     </button>

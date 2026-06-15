@@ -1,9 +1,17 @@
-import styles from './FormularioProducto.module.css'
+import styles from './FormProduct.module.css'
 
-const FormularioProducto = ({datosForm, manejarCambio, manejarEnvio, manejarCambioImagen, categorias, fileInputRef}) => {
+const FormProduct = ({
+    datosForm,
+    manejarCambio,
+    manejarEnvio,
+    manejarCambioImagen,
+    categorias,
+    mode,
+    cargando
+}) => {
     return (
         <form className={styles.formStyle} onSubmit={manejarEnvio}>
-            <h3>Agregar Nuevo Producto</h3>
+            <h3>{mode === "editing" ? "Editar Producto" : "Agregar Producto"}</h3>
             <div className={styles.formGroup}>
                 <label htmlFor="name">Nombre del producto:</label>
                 <input
@@ -49,7 +57,7 @@ const FormularioProducto = ({datosForm, manejarCambio, manejarEnvio, manejarCamb
                     onChange={manejarCambio}
                     required
                 >
-                    <option value="">Seleccione una categoría</option>
+                    <option value="" disabled>Seleccione una categoría</option>
                     {categorias.map((categoria) => (
                         <option key={categoria.slug} value={categoria.slug}>
                             {categoria.name}
@@ -73,11 +81,13 @@ const FormularioProducto = ({datosForm, manejarCambio, manejarEnvio, manejarCamb
             </div>
             <div className={styles.formGroup}>
                 <label htmlFor="imageUrl">Imagen:</label>
-                <input type="file" ref={fileInputRef} id="imageUrl" name="imageUrl" placeholder="https://..." onChange={manejarCambioImagen} />
+                <input type="file" id="imageUrl" name="imageUrl" placeholder="https://..." onChange={manejarCambioImagen} />
             </div>
-            <button className={styles.formButton} type="submit">Guardar Producto</button>
+            <button className={styles.formButton} type="submit">
+                { cargando ? "Guardando..." : mode === "editing" ? "Actualizar Producto" : "Guardar Producto"}
+            </button>
         </form>
     )
 };
 
-export default FormularioProducto;
+export default FormProduct;

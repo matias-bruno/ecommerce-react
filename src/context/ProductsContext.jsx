@@ -1,6 +1,6 @@
 import { useState, useContext, createContext, useEffect } from 'react';
 import { db } from '../firebase/config';
-import { collection, getDocs, doc, getDoc, addDoc, deleteDoc } from 'firebase/firestore';
+import { collection, getDocs, doc, getDoc, addDoc, deleteDoc, updateDoc } from 'firebase/firestore';
 
 const ProductsContext = createContext();
 
@@ -54,15 +54,21 @@ export const ProductsProvider = ({ children }) => {
     const createProduct = async (newProduct) => {
         const productsCollection = collection(db, 'products');
         const docRef = await addDoc(productsCollection, newProduct);
-        const productoCreado = { ...newProduct, id: docRef.id };
-        setProducts((prevProducts) => [...prevProducts, productoCreado]);
-        return productoCreado;
+        const createdProduct = { ...newProduct, id: docRef.id };
+        setProducts((prevProducts) => [...prevProducts, createdProduct]);
+        return createdProduct;
     };
 
     const deleteProduct = async (id) => {
-        const productoRef = doc(db, 'products', id);
-        await deleteDoc(productoRef);
+        const productRef = doc(db, 'products', id);
+        await deleteDoc(productRef);
         setProducts((prevProducts) => prevProducts.filter((product) => product.id !== id));
+    };
+
+    const editProduct = async (id, updatedProduct) => {
+        const productRef = doc(db, "products", id);
+        await updateDoc(productRef, updatedProduct);
+        setProducts((prevProducts) => prevProducts.map((product) => (product.id === id ? { ...product, ...updatedProduct } : product)));
     };
 
     return (
@@ -72,7 +78,8 @@ export const ProductsProvider = ({ children }) => {
             productsError,
             getProductById,
             createProduct,
-            deleteProduct
+            deleteProduct,
+            editProduct
         }}>
             {children}
         </ProductsContext.Provider>
