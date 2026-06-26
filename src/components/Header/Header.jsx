@@ -1,11 +1,14 @@
 import styles from './Header.module.css'
 import { Link } from 'react-router-dom'
 import Container from '../Container'
-import {useCart} from '../../context/CartContext'
+import { useCart } from '../../context/CartContext'
+import { useAuth } from '../../context/AuthContext'
 
 const Header = () => {
-    const { getCartQuantity } = useCart();  
+    const { getCartQuantity } = useCart();
     const totalItems = getCartQuantity();
+
+    const {user, logout} = useAuth();
 
     return (
         <header className={styles.header}>
@@ -24,7 +27,16 @@ const Header = () => {
                                     Carrito {totalItems > 0 && <span>{totalItems}</span>}
                                 </Link>
                             </li>
-                            <li><Link className={styles.header__enlace} to="/dashboard">Dashboard</Link></li>
+                            {user ? (
+                                <>{/* Mostrar Gestion SOLO si el usuario es admin */}
+                                    {user.role === 'admin' && (
+                                        <li><Link to="/dashboard" className={styles.header__enlace}>Gestion</Link></li>)}
+                                    {/* <li><Link to="/profile" className={styles.header__enlace}>Perfil</Link></li> */}
+                                    <li><button onClick={logout} className={styles.header__button}>Cerrar Sesión</button></li>
+                                </>
+                            ) : (
+                                <li><Link to="/login">Login</Link></li>
+                            )}
                         </ul>
                     </nav>
                 </div>

@@ -1,11 +1,13 @@
 import {Routes, Route} from 'react-router-dom'
 import Layout from './components/Layout';
 import ItemListContainer from './pages/ItemListContainer/ItemListContainer';
-import Container from './components/Container';
 import Home from './pages/Home';
 import DetalleProducto from './pages/DetalleProducto/DetalleProducto';
 import Carrito from './pages/Carrito/Carrito';
 import Dashboard from './pages/Dashboard/Dashboard';
+import Login from './pages/Login/Login';
+import Register from './pages/Register/Register';
+import ProtectedRoute from './components/ProtectedRoute';
 
 
 function App() {
@@ -17,7 +19,16 @@ function App() {
         <Route path="/productos" element={ <ItemListContainer mensaje={'Todos los productos'} /> } />
         <Route path="/producto/:id" element={<DetalleProducto />} />
         <Route path="/carrito" element={<Carrito />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute allowedRoles={['admin']}>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
       </Route>
     </Routes>
   )

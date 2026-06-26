@@ -10,6 +10,9 @@ const Dashboard = () => {
     const navigate = useNavigate();
     const { products, loadingProducts, productsError, deleteProduct } = useProductsContext();
 
+    // null cuando el modal está cerrado
+    // false cuando el modal está abierto en modo agregar
+    // true cuando el modal está abierto en modo editar
     const [productEditing, setProductEditing] = useState(null);
     const [modalOpen, setModalOpen] = useState(false);
 
@@ -79,7 +82,18 @@ const Dashboard = () => {
                 {modalOpen && (
                     // Este podría ser un componente también
                     <div className={styles.overlay} onClick={closeModal}>
-                        <div className={styles.modal} onClick={ (e) =>  e.stopPropagation() }>
+                        <div className={styles.modalHeader}>
+                            
+                        </div>
+                        <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
+                            <button
+                                className={styles.btnClose}
+                                onClick={closeModal}
+                                aria-label="Cerrar modal"
+                                type="button"
+                            >
+                                &times;
+                            </button>
                             <FormContainer
                                 closeModal={closeModal}
                                 productEditing={productEditing}

@@ -42,6 +42,36 @@
   background-color: var(--color-danger-hover);
 }
 
+.btnClose {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: none;
+  border-radius: 50%;
+  background-color: var(--color-danger);
+  color: var(--color-on-primary);
+  font-size: 1.25rem;
+  line-height: 1;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: transform 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+}
+
+.btnClose:hover,
+.btnClose:focus-visible {
+  background-color: var(--color-danger-hover);
+  outline: 2px solid rgba(255, 255, 255, 0.8);
+  outline-offset: 2px;
+}
+
+.btnClose:active {
+  transform: scale(0.96);
+}
+
 /* Tabla */
 .tableContainer {
     overflow-x: auto;

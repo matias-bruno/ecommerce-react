@@ -33,6 +33,7 @@ const FormProduct = ({
                     value={datosForm.price}
                     placeholder="Ej. 35"
                     onChange={manejarCambio}
+                    min={0}
                     required
                 />
             </div>
@@ -45,6 +46,7 @@ const FormProduct = ({
                     value={datosForm.stock}
                     placeholder="Ej. 5"
                     onChange={manejarCambio}
+                    min={0}
                     required
                 />
             </div>
@@ -80,10 +82,12 @@ const FormProduct = ({
                 <small>{datosForm.description.length}/250 caracteres</small>
             </div>
             <div className={styles.formGroup}>
-                <label htmlFor="imageUrl">Imagen:</label>
+                <label htmlFor="imageUrl">
+                    {mode === "editing" ? "Nueva imagen (opcional):" : "Imagen:"}
+                </label>
                 <input type="file" id="imageUrl" name="imageUrl" placeholder="https://..." onChange={manejarCambioImagen} />
             </div>
-            <button className={styles.formButton} type="submit">
+            <button className={styles.formButton} type="submit" disabled={cargando}>
                 { cargando ? "Guardando..." : mode === "editing" ? "Actualizar Producto" : "Guardar Producto"}
             </button>
         </form>

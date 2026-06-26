@@ -20,20 +20,19 @@
   font-weight: 500;
 }
 
-.formGroup input,
-.formGroup textarea,
-.formGroup select {
+input {
   padding: 10px;
   border-radius: 6px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--color-border);
   font-size: 14px;
+  margin-bottom: 10px;
 }
 
 .formGroup input:focus,
 .formGroup textarea:focus,
 .formGroup select:focus {
   outline: none;
-  border-color: #2A7AE4;
+  border-color: var(--color-primary);
 }
 
 .formStyle button {
@@ -43,7 +42,7 @@
   border: none;
   border-radius: 6px;
 
-  background: #2A7AE4;
+  background-color: var(--color-primary);
   color: white;
   font-size: 16px;
 
@@ -52,7 +51,7 @@
 }
 
 .formStyle button:hover {
-  background: #1e5fc1;
+  background-color: var(--color-primary-hover);
 }
 input, textarea, select {
     background-color: var(--color-bg);
