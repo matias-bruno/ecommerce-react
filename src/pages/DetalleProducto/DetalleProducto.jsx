@@ -3,7 +3,7 @@ import styles from './DetalleProducto.module.css';
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useCart } from "../../context/CartContext";
-import { useProductsContext } from "../../context/ProductsContext.jsx";
+import { useProducts } from "../../context/ProductsContext.jsx";
 import Swal from "sweetalert2";
 
 const DetalleProducto = () => {
@@ -12,7 +12,7 @@ const DetalleProducto = () => {
     const [error, setError] = useState(null);
     const [cargando, setCargando] = useState(false);
     const { addToCart, isInCart } = useCart();
-    const { getProductById } = useProductsContext();
+    const { getProductById } = useProducts();
     const navigate = useNavigate();
 
     useEffect(() => {

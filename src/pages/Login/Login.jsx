@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import styles from './Login.module.css';
 import { useAuth } from '../../context/AuthContext';
 import { useNavigate, Link } from 'react-router-dom';
@@ -15,15 +14,13 @@ const Login = () => {
         if (user) {
             navigate('/');
         }
-    }, [user]);
+    }, [user, navigate]);
 
     const handleLogin = async (event) => {
         event.preventDefault();
         setError(null);
         try {
-            const auth = getAuth();
-            const userCredential = await login(email, password);
-            // console.log('Usuario logueado: ', user);
+            await login(email, password);
         } catch (error) {
             const errorCode = error.code;
             const errorMessage = error.message;
@@ -70,7 +67,7 @@ const Login = () => {
                         Ingresar
                     </button>
                 </form>
-                <p className={styles.registerLink}>¿No tiene cuenta? <Link to="/register">Regístrese aquí</Link></p>
+                <p className={styles.registerLink}>¿No tiene cuenta? <Link to="/registro">Regístrese aquí</Link></p>
             </div>
         </section>
     );

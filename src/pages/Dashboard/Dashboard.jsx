@@ -2,13 +2,13 @@ import { useNavigate } from 'react-router-dom';
 import Swal from "sweetalert2";
 import styles from './Dashboard.module.css';
 import Container from "../../components/Container";
-import { useProductsContext } from '../../context/ProductsContext.jsx';
+import { useProducts } from '../../context/ProductsContext.jsx';
 import { useState } from 'react';
 import FormContainer from '../FormContainer.jsx';
 
 const Dashboard = () => {
     const navigate = useNavigate();
-    const { products, loadingProducts, productsError, deleteProduct } = useProductsContext();
+    const { products, loadingProducts, productsError, deleteProduct } = useProducts();
 
     // null cuando el modal está cerrado
     // false cuando el modal está abierto en modo agregar

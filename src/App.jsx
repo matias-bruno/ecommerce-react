@@ -1,5 +1,5 @@
 import {Routes, Route} from 'react-router-dom'
-import Layout from './components/Layout';
+import Layout from './components/Layout/Layout';
 import ItemListContainer from './pages/ItemListContainer/ItemListContainer';
 import Home from './pages/Home';
 import DetalleProducto from './pages/DetalleProducto/DetalleProducto';
@@ -8,6 +8,8 @@ import Dashboard from './pages/Dashboard/Dashboard';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import ProtectedRoute from './components/ProtectedRoute';
+import SearchBar from './components/SearchBar/SearchBar';
+import Search from './pages/Search/Search'
 
 
 function App() {
@@ -28,7 +30,8 @@ function App() {
           }
         />
         <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+        <Route path="/registro" element={<Register />} />
+        <Route path="/busqueda" element={<Search />} />
       </Route>
     </Routes>
   )

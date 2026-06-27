@@ -1,5 +1,5 @@
 import styles from './ProductCard.module.css'
-import sinImagen from '../../assets/sinImagen.png'
+import sinImagen from '../../assets/img/sinImagen.png'
 import FavoriteButton from '../FavoriteButton/FavoriteButton';
 import { useState } from 'react';
 import {Link} from 'react-router-dom';

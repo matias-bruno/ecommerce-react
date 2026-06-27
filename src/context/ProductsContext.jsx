@@ -4,10 +4,10 @@ import { collection, getDocs, doc, getDoc, addDoc, deleteDoc, updateDoc } from '
 
 const ProductsContext = createContext();
 
-export const useProductsContext = () => {
+export const useProducts = () => {
     const context = useContext(ProductsContext);
     if (!context) {
-        throw new Error('useProductsContext debe ser utilizado dentro de un ProductsProvider');
+        throw new Error('useProducts debe ser utilizado dentro de un ProductsProvider');
     }
     return context;
 };

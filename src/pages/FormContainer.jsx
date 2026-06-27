@@ -3,7 +3,7 @@ import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../firebase/config.js';
 import Swal from "sweetalert2";
 import FormProduct from '../components/FormProduct/FormProduct.jsx';
-import { useProductsContext } from '../context/ProductsContext.jsx';
+import { useProducts } from '../context/ProductsContext.jsx';
 
 const FormContainer = ({ closeModal, productEditing = null }) => {
     const datosIniciales = {
@@ -18,7 +18,7 @@ const FormContainer = ({ closeModal, productEditing = null }) => {
     const [imageFile, setImageFile] = useState(null);
     const [categorias, setCategorias] = useState([]);
     const [cargando, setCargando] = useState(false);
-    const { createProduct, editProduct } = useProductsContext();
+    const { createProduct, editProduct } = useProducts();
 
     const mode = productEditing ? "editing" : "adding";
 

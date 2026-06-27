@@ -1,10 +1,10 @@
 import ItemList from '../../components/ItemList/ItemList'
 import Container from '../../components/Container'
 import styles from './ItemListContainer.module.css'
-import { useProductsContext } from '../../context/ProductsContext.jsx'
+import { useProducts } from '../../context/ProductsContext.jsx'
 
 const ItemListContainer = ({ mensaje, categoria, cantidad }) => {
-    const { products, loadingProducts, productsError } = useProductsContext();
+    const { products, loadingProducts, productsError } = useProducts();
 
     if (loadingProducts) {
         return <p>Cargando productos, por favor espere...</p>;
