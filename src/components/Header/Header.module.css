@@ -9,6 +9,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    gap: 12px;
+    padding: 12px 0;
 }
 
 .header__logo {
@@ -16,19 +18,35 @@
     display: inline-flex;
 }
 
+.navbar {
+    display: none;
+    width: 100%;
+}
+
+.navbar.active {
+    display: block;
+}
+
 .header__menu {
     display: flex;
+    flex-direction: column;
     align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    list-style: none;
 }
 
 .header__enlace {
-    padding: 5px;
     display: inline-flex;
+    align-items: center;
+    justify-content: center;
     height: 40px;
     text-align: center;
     color: var(--color-primary);
-    padding: 12px 5px;
-    margin-right: 10px;
+    padding: 12px 10px;
+    margin-right: 0;
 }
 
 .header__enlaceCarrito {
@@ -36,10 +54,15 @@
     align-items: center;
     gap: 6px;
     color: var(--color-primary);
-    padding: 12px 5px;
-    margin: 10px;
+    padding: 12px 10px;
+    margin: 0;
     text-decoration: none;
+}
+
+.cartIcon {
     position: relative;
+    display: inline-flex;
+    align-items: center;
 }
 
 .srOnly {
@@ -56,8 +79,8 @@
 
 .badge {
     position: absolute;
-    top: 6px;
-    right: 6px;
+    top: -6px;
+    right: -10px;
     background: var(--color-accent, #e11);
     color: #fff;
     border-radius: 999px;
@@ -79,9 +102,12 @@
     height: 20px;
 }
 
-.header__button {
-  padding: 12px 5px;
-  margin-right: 10px;
+.logout__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 10px;
+  margin-right: 0;
   background: transparent;
   border: none;
   color: var(--color-primary);
@@ -91,15 +117,62 @@
   height: 40px;
 }
 
-.header__button:hover,
+.logout__button .navIcon {
+  margin-right: 6px;
+}
+
+.logout__button:hover,
 .header__enlace:hover {
   color: var(--color-primary-hover);
+}
+
+.menu__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--color-border);
+    background: transparent;
+    color: var(--color-primary);
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 1.2rem;
+    cursor: pointer;
 }
 
 @media screen and (min-width: 768px) {
     .headerContent {
         flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 0;
     }
+
+    .navbar {
+        display: block;
+        width: auto;
+    }
+
+    .header__menu {
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: auto;
+        gap: 4px;
+    }
+
+    .header__enlace {
+        margin-right: 4px;
+        padding: 8px 6px;
+    }
+
+    .header__enlaceCarrito,
+    .logout__button {
+        padding: 8px 6px;
+    }
+
+    .menu__button {
+        display: none;
+    }
+
     .srOnly {
         position: static;
         width: auto;

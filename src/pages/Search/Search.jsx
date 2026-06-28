@@ -30,7 +30,7 @@ const Search = () => {
                 (
                     <>
                         <div className={styles.headerProducts}>
-                            <h2 className={styles.headerProductos__title}>{"Resultados de la busqueda"}</h2>
+                            <h2 className={styles.headerProducts__title}>{"Resultados de la busqueda"}</h2>
                         </div>
                         <ItemList productos={productsSearch} />
                     </>
