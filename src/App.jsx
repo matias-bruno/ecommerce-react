@@ -9,10 +9,10 @@ import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import ProtectedRoute from './components/ProtectedRoute';
 import SearchBar from './components/SearchBar/SearchBar';
-import Search from './pages/Search/Search'
+import Search from './pages/Search'
 
 
-function App() {
+const App = () => {
 
   return (
     <Routes>

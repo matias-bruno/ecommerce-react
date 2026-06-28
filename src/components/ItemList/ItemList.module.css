@@ -5,3 +5,19 @@
     width: 100%;
     justify-items: center;
 }
+.headerProductos {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+.headerProductos__titulo {
+    font-size: 1.5rem;
+    padding: 10px;
+}
+.noResults {
+  min-height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

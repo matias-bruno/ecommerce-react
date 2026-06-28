@@ -1,10 +1,9 @@
 import { useEffect } from 'react'
-import ItemList from '../../components/ItemList/ItemList'
-import Container from '../../components/Container'
+import ItemList from '../components/ItemList/ItemList.jsx'
+import Container from '../components/Container.jsx'
 import { useNavigate } from 'react-router-dom'
-import { useProducts } from '../../context/ProductsContext.jsx'
-import { useSearch } from '../../context/SearchContext.jsx'
-import styles from './Search.module.css'
+import { useProducts } from '../context/ProductsContext.jsx'
+import { useSearch } from '../context/SearchContext.jsx'
 
 const Search = () => {
     // Traemos todos los productos desde el contexto
@@ -26,20 +25,7 @@ const Search = () => {
 
     return (
         <Container>
-            {productsSearch.length > 0 ?
-                (
-                    <>
-                        <div className={styles.headerProducts}>
-                            <h2 className={styles.headerProducts__title}>{"Resultados de la busqueda"}</h2>
-                        </div>
-                        <ItemList productos={productsSearch} />
-                    </>
-                )
-                :
-                (
-                    <p className={styles.noResults}>No hay productos que coincidan con la búsqueda.</p>
-                )
-            }
+            <ItemList productos={productsSearch} mensaje={"Resultados de la busqueda"} />
         </Container>
     );
 

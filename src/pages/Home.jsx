@@ -1,12 +1,12 @@
 import Hero from '../components/Hero/Hero'
-import ItemListContainer from './ItemListContainer/ItemListContainer';
+import ProductsPreview from '../components/ProductsPreview';
 
 const Home = () => {
     return (
         <>
             <Hero />
-            <ItemListContainer mensaje="Computadoras portátiles" categoria="laptops" cantidad={4} />
-            <ItemListContainer mensaje="Celulares" categoria="smartphones" cantidad={4} />
+            <ProductsPreview mensaje="Computadoras portátiles" categoria="laptops" cantidad={4} />
+            <ProductsPreview mensaje="Celulares" categoria="smartphones" cantidad={4} />
         </>
         
     )
