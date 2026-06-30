@@ -1,25 +1,26 @@
-import { useSearch } from '../../context/SearchContext';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import SearchIcon from '../../assets/icons/SearchIcon';
 import styles from './SearchBar.module.css';
 import { useState, useEffect } from 'react';
 
 const SearchBar = () => {
-    const { query, setQuery } = useSearch();
-    const [input, setInput] = useState(query || '');
+    const [input, setInput] = useState('');
     const navigate = useNavigate();
+    const location = useLocation();
 
     useEffect(() => {
-        setInput(query || '');
-    }, [query]);
+        const params = new URLSearchParams(location.search);
+        setInput(params.get('query') || '');
+    }, [location.search]);
 
     const handleSubmit = (event) => {
         event.preventDefault();
         const value = input.trim();
-        setQuery(value);
 
         if (value) {
-            navigate('/busqueda');
+            navigate(`/busqueda?query=${encodeURIComponent(value)}`);
+        } else {
+            navigate('/');
         }
     };
 

@@ -6,19 +6,16 @@ import ScrollToTop from './components/ScrollToTop.jsx'
 import { CartProvider } from './context/CartContext.jsx'
 import { ProductsProvider } from './context/ProductsContext.jsx'
 import { AuthProvider } from './context/AuthContext.jsx'
-import { SearchProvider } from './context/SearchContext.jsx'
 
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>
     <ScrollToTop />
-    <SearchProvider>
-      <AuthProvider>
-        <CartProvider>
-          <ProductsProvider>
-            <App />
-          </ProductsProvider>
-        </CartProvider>
-      </AuthProvider>
-    </SearchProvider>
+    <AuthProvider>
+      <CartProvider>
+        <ProductsProvider>
+          <App />
+        </ProductsProvider>
+      </CartProvider>
+    </AuthProvider>
   </BrowserRouter>,
 )
