@@ -3,6 +3,8 @@ import ItemList from '../components/ItemList/ItemList.jsx'
 import Container from '../components/Container.jsx'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { useProducts } from '../context/ProductsContext.jsx'
+import { ITEMS_PER_PAGE } from '../constants/pagination.js'
+import usePagination from '../hooks/usePagination.jsx'
 
 const Search = () => {
     const { products } = useProducts();
@@ -21,9 +23,26 @@ const Search = () => {
         ? products.filter(product => product.name.toLowerCase().includes(normalizedQuery))
         : [];
 
+    const { currentItems, currentPage, totalPages, goToPage, resetPage, nextPage, prevPage } = usePagination({
+        items: productsSearch,
+        itemsPerPage: ITEMS_PER_PAGE,
+    });
+
+    useEffect(() => {
+        resetPage();
+    }, [normalizedQuery, resetPage]);
+
     return (
         <Container>
-            <ItemList productos={productsSearch} mensaje={"Resultados de la busqueda"} />
+            <ItemList
+                productos={currentItems}
+                mensaje={"Resultados de la busqueda"}
+                currentPage={currentPage}
+                totalPages={totalPages}
+                goToPage={goToPage}
+                nextPage={nextPage}
+                prevPage={prevPage}
+            />
         </Container>
     );
 

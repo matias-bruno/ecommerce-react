@@ -1,7 +1,7 @@
 import ProductCard from "../ProductCard/ProductCard";
 import styles from "./ItemList.module.css";
 
-const ItemList = ({ productos, mensaje }) => {
+const ItemList = ({ productos, mensaje, currentPage, totalPages, goToPage, nextPage, prevPage }) => {
     return (
         <section>
             {productos.length > 0 ?
@@ -23,6 +23,28 @@ const ItemList = ({ productos, mensaje }) => {
                             ))
                         }
                     </ul>
+
+                    {totalPages > 1 && (
+                        <div className={styles.pagination}>
+                            <button onClick={prevPage} disabled={currentPage === 1} className={styles.paginationButton}>
+                                Anterior
+                            </button>
+
+                            {Array.from({ length: totalPages }, (_, index) => (
+                                <button
+                                    key={index + 1}
+                                    onClick={() => goToPage(index + 1)}
+                                    className={`${styles.paginationButton} ${currentPage === index + 1 ? styles.activePage : ''}`}
+                                >
+                                    {index + 1}
+                                </button>
+                            ))}
+
+                            <button onClick={nextPage} disabled={currentPage === totalPages} className={styles.paginationButton}>
+                                Siguiente
+                            </button>
+                        </div>
+                    )}
                 </div>
                 :
                 (
