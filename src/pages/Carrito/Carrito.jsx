@@ -2,20 +2,56 @@ import Container from "../../components/Container";
 import styles from './Carrito.module.css';
 import { useCart } from "../../context/CartContext";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from '../../context/AuthContext';
+import Swal from "sweetalert2";
 
 const Carrito = () => {
     const { cart, addToCart, removeFromCart, clearCart, decreaseQuantity, getCartTotal } = useCart();
     const totalCart = getCartTotal();
     const navigate = useNavigate();
+    const { user } = useAuth();
 
     const handleClear = () => {
         clearCart();
     };
 
-    const handlePurchase = () => {
+    const handlePurchase = async () => {
         if (cart.length === 0) return;
-        alert(`Gracias por tu compra. Total: $${totalCart.toFixed(2)}`);
-        clearCart();
+        if (!user) {
+            const result = await Swal.fire({
+                title: 'Debes iniciar sesión',
+                text: 'Necesitas iniciar sesión para completar la compra.',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: 'var(--color-primary)',
+                cancelButtonColor: 'var(--color-secondary)',
+                confirmButtonText: 'Ir al login',
+                cancelButtonText: 'Cancelar'
+            });
+            if (result.isConfirmed) {
+                navigate('/login');
+            }
+            return;
+        }
+        const result = await Swal.fire({
+            title: '¿Confirmar compra?',
+            text: "¡El cargo se realizará en tu método de pago seleccionado!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: 'var(--color-primary)',
+            cancelButtonColor: 'var(--color-secondary)',
+            confirmButtonText: 'Comprar',
+            cancelButtonText: 'Cancelar'
+        });
+        if (result.isConfirmed) {
+            // Lógica de la compra pendiente
+            Swal.fire(
+                '¡Compra realizada!',
+                'Tu pedido ha sido procesado con éxito. Revisa tu correo electrónico para el comprobante.',
+                'success'
+            )
+            clearCart();
+        }
     };
 
     const handleRemove = (item) => {
@@ -31,7 +67,7 @@ const Carrito = () => {
                     <p>Agregá productos para empezar a comprar</p>
                     <button
                         className={styles.carrito__boton + " " + styles.carrito__botonPrimario}
-                        onClick={ () => navigate("/productos") }
+                        onClick={() => navigate("/productos")}
                     >
                         Ver productos
                     </button>

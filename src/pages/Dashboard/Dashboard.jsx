@@ -40,7 +40,7 @@ const Dashboard = () => {
             showCancelButton: true,
             confirmButtonText: "Eliminar",
             cancelButtonText: "Cancelar",
-            confirmButtonColor: "#d33",
+            confirmButtonColor: "var(--color-danger)",
         });
         if (result.isConfirmed) {
             try {
