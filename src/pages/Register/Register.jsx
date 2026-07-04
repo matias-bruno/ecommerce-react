@@ -24,7 +24,10 @@ const Register = () => {
     const validateForm = () => {
         const newErrors = {};
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/;
+        const hasMinLength = password.length >= 8;
+        const hasLowercase = /[a-z]/.test(password);
+        const hasUppercase = /[A-Z]/.test(password);
+        const hasNumber = /\d/.test(password);
 
         if (!email.trim()) {
             newErrors.email = 'El correo electrónico es obligatorio.';
@@ -34,8 +37,12 @@ const Register = () => {
 
         if (!password) {
             newErrors.password = 'La contraseña es obligatoria.';
-        } else if (!passwordRegex.test(password)) {
-            newErrors.password = 'La contraseña debe tener al menos una minúscula, una mayúscula y un número.';
+        } else {
+            if (!hasMinLength) {
+                newErrors.password = 'La contraseña debe tener al menos 8 caracteres.';
+            } else if (!hasLowercase || !hasUppercase || !hasNumber) {
+                newErrors.password = 'La contraseña debe incluir una minúscula, una mayúscula y un número.';
+            }
         }
 
         if (!passwordRepeat) {
