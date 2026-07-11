@@ -1,8 +1,8 @@
-import ItemList from '../../components/ItemList/ItemList'
-import Container from '../../components/Container'
-import { useProducts } from '../../context/ProductsContext.jsx'
-import { ITEMS_PER_PAGE } from '../../constants/pagination'
-import usePagination from '../../hooks/usePagination'
+import ItemList from '../components/ItemList/ItemList.jsx'
+import Container from '../components/Container.jsx'
+import { useProducts } from '../context/ProductsContext.jsx'
+import { ITEMS_PER_PAGE } from '../constants/pagination.js'
+import usePagination from '../hooks/usePagination.jsx'
 
 const ItemListContainer = ({ mensaje }) => {
     const { products, loadingProducts, productsError } = useProducts();

@@ -1,6 +1,6 @@
 import {Routes, Route} from 'react-router-dom'
 import Layout from './components/Layout/Layout';
-import ItemListContainer from './pages/ItemListContainer/ItemListContainer';
+import ItemListContainer from './pages/ItemListContainer';
 import Home from './pages/Home';
 import DetalleProducto from './pages/DetalleProducto/DetalleProducto';
 import Carrito from './pages/Carrito/Carrito';

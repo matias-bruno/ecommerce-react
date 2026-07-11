@@ -5,10 +5,16 @@ import Container from "../../components/Container";
 import { useProducts } from '../../context/ProductsContext.jsx';
 import { useState } from 'react';
 import FormContainer from '../FormContainer.jsx';
+import usePagination from '../../hooks/usePagination.jsx';
+import Pagination from '../../components/Pagination/Pagination.jsx';
 
 const Dashboard = () => {
     const navigate = useNavigate();
     const { products, loadingProducts, productsError, deleteProduct } = useProducts();
+    const { currentItems, currentPage, totalPages, goToPage, nextPage, prevPage } = usePagination({
+        items: products,
+        itemsPerPage: 10,
+    });
 
     // null cuando el modal está cerrado
     // false cuando el modal está abierto en modo agregar
@@ -83,7 +89,7 @@ const Dashboard = () => {
                     // Este podría ser un componente también
                     <div className={styles.overlay} onClick={closeModal}>
                         <div className={styles.modalHeader}>
-                            
+
                         </div>
                         <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
                             <button
@@ -119,7 +125,7 @@ const Dashboard = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {products.map((producto) => (
+                        {currentItems.map((producto) => (
                             <tr key={producto.id}>
                                 <td>
                                     {producto.name.length > 30
@@ -151,6 +157,14 @@ const Dashboard = () => {
                     </tbody>
                 </table>
             </div>
+            <Pagination 
+                currentItems={currentItems}
+                currentPage={currentPage}
+                totalPages={totalPages}
+                goToPage={goToPage}
+                nextPage={nextPage}
+                prevPage={prevPage}
+            />
         </Container>
     );
 }
