@@ -3,6 +3,7 @@ import Container from '../components/Container.jsx'
 import { useProducts } from '../context/ProductsContext.jsx'
 import { ITEMS_PER_PAGE } from '../constants/pagination.js'
 import usePagination from '../hooks/usePagination.jsx'
+import Pagination from '../components/Pagination/Pagination.jsx'
 
 const ItemListContainer = ({ mensaje }) => {
     const { products, loadingProducts, productsError } = useProducts();
@@ -24,6 +25,8 @@ const ItemListContainer = ({ mensaje }) => {
             <ItemList
                 productos={currentItems}
                 mensaje={mensaje}
+            />
+            <Pagination
                 currentPage={currentPage}
                 totalPages={totalPages}
                 goToPage={goToPage}

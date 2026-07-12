@@ -5,6 +5,7 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import { useProducts } from '../context/ProductsContext.jsx'
 import { ITEMS_PER_PAGE } from '../constants/pagination.js'
 import usePagination from '../hooks/usePagination.jsx'
+import Pagination from '../components/Pagination/Pagination.jsx'
 
 const Search = () => {
     const { products } = useProducts();
@@ -37,6 +38,8 @@ const Search = () => {
             <ItemList
                 productos={currentItems}
                 mensaje={"Resultados de la busqueda"}
+            />
+            <Pagination
                 currentPage={currentPage}
                 totalPages={totalPages}
                 goToPage={goToPage}

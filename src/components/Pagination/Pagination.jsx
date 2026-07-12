@@ -1,6 +1,6 @@
 import styles from './Pagination.module.css';
 
-const Pagination = ({ currentItems, currentPage, totalPages, goToPage, nextPage, prevPage }) => {
+const Pagination = ({ currentPage, totalPages, goToPage, nextPage, prevPage }) => {
     return (
         <>
             {totalPages > 1 && (
