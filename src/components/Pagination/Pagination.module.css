@@ -2,23 +2,28 @@
     display: flex;
     justify-content: center;
     gap: 10px;
-    margin-top: 20px;
+    padding: 16px;
     flex-wrap: wrap;
 }
 .paginationButton {
-    border: 1px solid #ddd;
-    background-color: white;
-    color: #333;
+    border: 1px solid var(--color-border);
+    background-color: var(--color-surface);
+    color: var(--color-text);
     padding: 8px 12px;
-    border-radius: 6px;
+    border-radius: var(--radius-sm);
     cursor: pointer;
+}
+
+.paginationButton:hover,
+.paginationButton:focus-visible {
+    border-color: var(--color-primary);
 }
 .paginationButton:disabled {
     cursor: not-allowed;
     opacity: 0.5;
 }
 .activePage {
-    background-color: #2c6bed;
-    color: white;
-    border-color: #2c6bed;
+    background-color: var(--color-primary);
+    color: var(--color-on-primary);
+    border-color: var(--color-primary);
 }

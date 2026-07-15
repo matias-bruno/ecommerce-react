@@ -6,12 +6,13 @@
     width: 100%;
     max-width: 250px;
     padding: 1rem;
-    border-radius: 12px;
+    border-radius: var(--radius-lg);
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     gap: 1rem;
+    box-shadow: var(--shadow-sm);
 }
 
 .producto__img {
@@ -27,5 +28,11 @@
 }
 
 .producto__enlace {
-    color: var(--color-primary)
+    color: var(--color-primary);
+}
+
+.producto:hover {
+    border-color: var(--color-primary);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-3px);
 }

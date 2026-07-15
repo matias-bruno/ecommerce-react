@@ -14,6 +14,8 @@ html {
   box-sizing: inherit;
 }
 
+/* End of reset code */
+
 a {
   text-decoration: none;
   color: var(--color-primary);
@@ -23,11 +25,23 @@ a:hover {
   color: var(--color-primary-hover);
 }
 
+a, button, input, select, textarea {
+  transition: color var(--transition-base), background-color var(--transition-base), border-color var(--transition-base), box-shadow var(--transition-base), transform var(--transition-base);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid rgba(42, 122, 228, 0.25);
+  outline-offset: 2px;
+}
+
 li {
   list-style: none;
 }
 
-/* End of reset code */
 body {
   color: var(--color-text);
   font-family: 'Raleway', sans-serif;
@@ -43,6 +57,7 @@ body {
   --color-primary: #2A7AE4;
   --color-primary-hover: #1D4ED8;
   --color-on-primary: #ffffff;
+  --color-accent: var(--color-danger);
   --color-secondary: #6B7280;
   --color-secondary-hover: #4B5563;
   --color-surface: #ffffff;
@@ -50,6 +65,12 @@ body {
   --color-text-muted: #bdc3c7;
   --color-danger: #ef4444;
   --color-danger-hover:#dc2626;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.08);
+  --shadow-md: 0 10px 24px rgba(15, 23, 42, 0.12);
+  --transition-base: 180ms ease;
 }
 
 .container {

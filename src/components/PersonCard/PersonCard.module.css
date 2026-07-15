@@ -1,5 +1,5 @@
 .card {
-  background-color: #1E293B;
+  background-color: var(--color-bg-alt);
   padding: 15px;
   border-radius: 8px;
   display: flex;

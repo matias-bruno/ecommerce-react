@@ -4,20 +4,30 @@
     gap: 20px;
     width: 100%;
     justify-items: center;
+    padding: 16px 0 32px;
 }
+
 .headerProductos {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
+    gap: 16px;
+    margin: 24px 0 8px;
+    padding: 0 4px;
 }
+
 .headerProductos__titulo {
     font-size: 1.5rem;
-    padding: 10px;
+    color: var(--color-text);
+    font-weight: 700;
 }
+
 .noResults {
   min-height: 60vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  color: var(--color-secondary);
+  text-align: center;
+  padding: 24px;
 }

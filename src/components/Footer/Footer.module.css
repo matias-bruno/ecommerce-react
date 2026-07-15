@@ -1,7 +1,6 @@
 .footer {
     background-color: var(--color-bg-alt);
     color: var(--color-text-alt);
-    margin-top: 20px;
 }
 
 .footerContent {
@@ -13,7 +12,7 @@
 }
 
 .footerTitle {
-  color: #2A7AE4; 
+  color: var(--color-primary);
   margin-bottom: 15px;
 }
 
