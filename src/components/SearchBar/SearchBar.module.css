@@ -3,10 +3,12 @@
     align-items: center;
     gap: 0.5rem;
     background-color: var(--color-surface);
-    padding: 4px;
     border: 1px solid var(--color-border);
     border-radius: 999px;
-    box-shadow: var(--shadow-sm);
+}
+
+.searchForm:focus-within {
+    border-color: var(--color-primary);
 }
 
 .searchInput {
@@ -17,9 +19,13 @@
     outline: none;
     background-color: transparent;
     color: var(--color-text);
+    box-shadow: none;
+    appearance: none;
 }
 
-.searchInput:focus {
+.searchInput:focus,
+.searchInput:focus-visible {
+    outline: none;
     box-shadow: none;
 }
 
@@ -31,13 +37,11 @@
     background: var(--color-primary);
     cursor: pointer;
     color: var(--color-on-primary);
-    padding: 0.6rem;
+    padding: 0.4rem;
     border-radius: 999px;
-    transition: background-color var(--transition-base), transform var(--transition-base);
 }
 
 .searchButton:hover,
 .searchButton:focus-visible {
     background-color: var(--color-primary-hover);
-    transform: translateY(-1px);
 }
