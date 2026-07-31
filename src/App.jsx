@@ -18,7 +18,7 @@ const App = () => {
     <Routes>
       <Route element={<Layout />}>
         <Route path="/" element={ <Home /> } />
-        <Route path="/productos" element={ <ItemListContainer mensaje={'Todos los productos'} /> } />
+        <Route path="/productos" element={ <ItemListContainer /> } />
         <Route path="/producto/:id" element={<DetalleProducto />} />
         <Route path="/carrito" element={<Carrito />} />
         <Route
