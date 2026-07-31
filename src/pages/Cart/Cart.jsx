@@ -1,11 +1,11 @@
 import Container from "../../components/Container";
-import styles from './Carrito.module.css';
+import styles from './Cart.module.css';
 import { useCart } from "../../context/CartContext";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from '../../context/AuthContext';
 import Swal from "sweetalert2";
 
-const Carrito = () => {
+const Cart = () => {
     const { cart, addToCart, removeFromCart, clearCart, decreaseQuantity, getCartTotal } = useCart();
     const totalCart = getCartTotal();
     const navigate = useNavigate();
@@ -117,4 +117,4 @@ const Carrito = () => {
     );
 }
 
-export default Carrito;
+export default Cart;

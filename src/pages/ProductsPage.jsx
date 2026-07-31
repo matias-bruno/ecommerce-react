@@ -7,7 +7,7 @@ import { ITEMS_PER_PAGE } from '../constants/pagination.js'
 import usePagination from '../hooks/usePagination.jsx'
 import Pagination from '../components/Pagination/Pagination.jsx'
 
-const ItemListContainer = () => {
+const ProductsPage = () => {
     const { products, loadingProducts, productsError } = useProducts();
     const [selectedCategory, setSelectedCategory] = useState('all');
     const [maxPrice, setMaxPrice] = useState('');
@@ -127,4 +127,4 @@ const ItemListContainer = () => {
     );
 }
 
-export default ItemListContainer;
+export default ProductsPage;

@@ -1,9 +1,9 @@
 import {Routes, Route} from 'react-router-dom'
 import Layout from './components/Layout/Layout';
-import ItemListContainer from './pages/ItemListContainer';
+import ProductsPage from './pages/ProductsPage';
 import Home from './pages/Home';
-import DetalleProducto from './pages/DetalleProducto/DetalleProducto';
-import Carrito from './pages/Carrito/Carrito';
+import ProductDetail from './pages/ProductDetail/ProductDetail';
+import Cart from './pages/Cart/Cart';
 import Dashboard from './pages/Dashboard/Dashboard';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
@@ -18,9 +18,9 @@ const App = () => {
     <Routes>
       <Route element={<Layout />}>
         <Route path="/" element={ <Home /> } />
-        <Route path="/productos" element={ <ItemListContainer /> } />
-        <Route path="/producto/:id" element={<DetalleProducto />} />
-        <Route path="/carrito" element={<Carrito />} />
+        <Route path="/productos" element={ <ProductsPage /> } />
+        <Route path="/producto/:id" element={<ProductDetail />} />
+        <Route path="/carrito" element={<Cart />} />
         <Route
           path="/dashboard"
           element={

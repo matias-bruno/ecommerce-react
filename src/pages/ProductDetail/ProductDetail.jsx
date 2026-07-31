@@ -1,12 +1,12 @@
-import Container from "../../components/Container";
-import styles from './DetalleProducto.module.css';
+import Container from "../../components/Container.jsx";
+import styles from './ProductDetail.module.css';
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { useCart } from "../../context/CartContext";
+import { useCart } from "../../context/CartContext.jsx";
 import { useProducts } from "../../context/ProductsContext.jsx";
 import Swal from "sweetalert2";
 
-const DetalleProducto = () => {
+const ProductDetail = () => {
     const { id } = useParams();
     const [producto, setProducto] = useState(null);
     const [error, setError] = useState(null);
@@ -85,4 +85,4 @@ const DetalleProducto = () => {
     );
 }
 
-export default DetalleProducto;
+export default ProductDetail;
