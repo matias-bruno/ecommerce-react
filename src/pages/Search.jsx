@@ -15,7 +15,7 @@ const Search = () => {
 
     useEffect(() => {
         if (!query.trim()) {
-            navigate('/')
+            navigate('/', { replace: true });
         }
     }, [query, navigate]);
 

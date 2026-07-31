@@ -29,7 +29,7 @@ const Cart = () => {
                 cancelButtonText: 'Cancelar'
             });
             if (result.isConfirmed) {
-                navigate('/login');
+                navigate('/login', { replace: true });
             }
             return;
         }

@@ -17,9 +17,9 @@ const Register = () => {
 
     useEffect(() => {
         if (user) {
-            navigate('/');
+            navigate('/', { replace: true });
         }
-    }, [user]);
+    }, [user, navigate]);
 
     const validateForm = () => {
         const newErrors = {};
@@ -80,7 +80,7 @@ const Register = () => {
                 });
 
                 if (result.isConfirmed) {
-                    navigate('/login');
+                    navigate('/login', { replace: true });
                 }
             } else {
                 setSubmitError('Ocurrió un error. Verifique los datos e intente nuevamente.');
