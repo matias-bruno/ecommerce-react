@@ -1,4 +1,5 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
+import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import ItemList from '../components/ItemList/ItemList.jsx'
 import Container from '../components/Container.jsx'
 import ProductFilter from '../components/ProductFilter/ProductFilter.jsx';
@@ -9,6 +10,9 @@ import Pagination from '../components/Pagination/Pagination.jsx'
 
 const ProductsPage = () => {
     const { products, loadingProducts, productsError } = useProducts();
+    const { categorySlug } = useParams();
+    const navigate = useNavigate();
+    const [searchParams] = useSearchParams();
     const [selectedCategory, setSelectedCategory] = useState('all');
     const [maxPrice, setMaxPrice] = useState('');
     const [sortOption, setSortOption] = useState('default');
@@ -16,6 +20,58 @@ const ProductsPage = () => {
     const categories = useMemo(() => {
         return [...new Set(products.map((product) => product.categorySlug).filter(Boolean))].sort();
     }, [products]);
+
+    useEffect(() => {
+        const normalizedCategory = categorySlug && categories.includes(categorySlug) ? categorySlug : 'all';
+        setSelectedCategory(normalizedCategory);
+    }, [categorySlug, categories]);
+
+    useEffect(() => {
+        setMaxPrice(searchParams.get('maxPrice') ?? '');
+        setSortOption(searchParams.get('sort') ?? 'default');
+    }, [searchParams]);
+
+    const buildProductsPath = (nextCategory, nextMaxPrice, nextSort) => {
+        const params = new URLSearchParams();
+
+        if (nextMaxPrice !== '') {
+            params.set('maxPrice', nextMaxPrice);
+        }
+
+        if (nextSort !== 'default') {
+            params.set('sort', nextSort);
+        }
+
+        const basePath = nextCategory === 'all' ? '/productos' : `/productos/${nextCategory}`;
+        const queryString = params.toString();
+
+        return queryString ? `${basePath}?${queryString}` : basePath;
+    };
+
+    const handleCategoryChange = (event) => {
+        const nextCategory = event.target.value;
+        setSelectedCategory(nextCategory);
+        navigate(buildProductsPath(nextCategory, maxPrice, sortOption));
+    };
+
+    const handleMaxPriceChange = (event) => {
+        const nextMaxPrice = event.target.value;
+        setMaxPrice(nextMaxPrice);
+        navigate(buildProductsPath(selectedCategory, nextMaxPrice, sortOption));
+    };
+
+    const handleSortChange = (event) => {
+        const nextSortOption = event.target.value;
+        setSortOption(nextSortOption);
+        navigate(buildProductsPath(selectedCategory, maxPrice, nextSortOption));
+    };
+
+    const handleClearFilters = () => {
+        setSelectedCategory('all');
+        setMaxPrice('');
+        setSortOption('default');
+        navigate('/productos');
+    };
 
     const filteredProducts = useMemo(() => {
         let result = [...products];
@@ -102,14 +158,10 @@ const ProductsPage = () => {
                 selectedCategory={selectedCategory}
                 maxPrice={maxPrice}
                 sortOption={sortOption}
-                onCategoryChange={(event) => setSelectedCategory(event.target.value)}
-                onMaxPriceChange={(event) => setMaxPrice(event.target.value)}
-                onSortChange={(event) => setSortOption(event.target.value)}
-                onClearFilters={() => {
-                    setSelectedCategory('all');
-                    setMaxPrice('');
-                    setSortOption('default');
-                }}
+                onCategoryChange={handleCategoryChange}
+                onMaxPriceChange={handleMaxPriceChange}
+                onSortChange={handleSortChange}
+                onClearFilters={handleClearFilters}
             />
 
             <ItemList
