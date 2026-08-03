@@ -1,9 +1,8 @@
-import { useState, useEffect, useRef } from 'react';
-import { collection, getDocs } from 'firebase/firestore';
-import { db } from '../firebase/config.js';
+import { useState, useEffect } from 'react';
 import Swal from "sweetalert2";
 import FormProduct from '../components/FormProduct/FormProduct.jsx';
 import { useProducts } from '../context/ProductsContext.jsx';
+import useCategories from '../hooks/useCategories.jsx';
 
 const FormContainer = ({ closeModal, productEditing = null }) => {
     const datosIniciales = {
@@ -16,7 +15,7 @@ const FormContainer = ({ closeModal, productEditing = null }) => {
     };
     const [datosForm, setDatosForm] = useState(datosIniciales);
     const [imageFile, setImageFile] = useState(null);
-    const [categorias, setCategorias] = useState([]);
+    const { categories, loadingCategories } = useCategories();
     const [cargando, setCargando] = useState(false);
     const { createProduct, editProduct } = useProducts();
 
@@ -36,20 +35,6 @@ const FormContainer = ({ closeModal, productEditing = null }) => {
             });
         }
     }, [productEditing]);
-
-    // Traemos las categorias disponibles
-    useEffect(() => {
-        const categoriasDB = collection(db, "categories")
-        getDocs(categoriasDB).then((resp) => {
-            let datos = resp.docs.map((doc) => {
-                return { ...doc.data(), id: doc.id }
-            });
-            setCategorias(datos);
-        })
-            .catch(error => {
-                console.error('¡Ups! Hubo un error:', error);
-            });
-    }, [])
 
     const manejarCambio = (evento) => {
         const { name, value } = evento.target;
@@ -150,7 +135,8 @@ const FormContainer = ({ closeModal, productEditing = null }) => {
             manejarCambio={manejarCambio}
             manejarEnvio={manejarEnvio}
             manejarCambioImagen={manejarCambioImagen}
-            categorias={categorias}
+            categories={categories}
+            loadingCategories={loadingCategories}
             mode={mode}
             cargando={cargando}
         />

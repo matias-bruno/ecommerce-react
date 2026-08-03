@@ -7,6 +7,7 @@ import { useProducts } from '../context/ProductsContext.jsx'
 import { ITEMS_PER_PAGE } from '../constants/pagination.js'
 import usePagination from '../hooks/usePagination.jsx'
 import Pagination from '../components/Pagination/Pagination.jsx'
+import useCategories from '../hooks/useCategories.jsx'
 
 const ProductsPage = () => {
     const { products, loadingProducts, productsError } = useProducts();
@@ -16,13 +17,12 @@ const ProductsPage = () => {
     const [selectedCategory, setSelectedCategory] = useState('all');
     const [maxPrice, setMaxPrice] = useState('');
     const [sortOption, setSortOption] = useState('default');
+    const { categories, loadingCategories } = useCategories();
 
-    const categories = useMemo(() => {
-        return [...new Set(products.map((product) => product.categorySlug).filter(Boolean))].sort();
-    }, [products]);
+    const categorySlugs = useMemo( () => categories.map((category) => category.slug), [categories]);
 
     useEffect(() => {
-        const normalizedCategory = categorySlug && categories.includes(categorySlug) ? categorySlug : 'all';
+        const normalizedCategory = categorySlug && categorySlugs.includes(categorySlug) ? categorySlug : 'all';
         setSelectedCategory(normalizedCategory);
     }, [categorySlug, categories]);
 
@@ -143,8 +143,8 @@ const ProductsPage = () => {
         itemsPerPage: ITEMS_PER_PAGE,
     });
 
-    if (loadingProducts) {
-        return <p>Cargando productos, por favor espere...</p>;
+    if (loadingProducts || loadingCategories) {
+        return <p>Cargando productos y categorías, por favor espere...</p>;
     }
 
     if (productsError) {
@@ -163,7 +163,6 @@ const ProductsPage = () => {
                 onSortChange={handleSortChange}
                 onClearFilters={handleClearFilters}
             />
-
             <ItemList
                 productos={currentItems}
                 mensaje={mensaje}

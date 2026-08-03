@@ -18,8 +18,8 @@ const ProductFilter = ({
                     <select value={selectedCategory} onChange={onCategoryChange}>
                         <option value="all">Todas</option>
                         {categories.map((category) => (
-                            <option key={category} value={category}>
-                                {category}
+                            <option key={category.slug} value={category.slug}>
+                                {category.name}
                             </option>
                         ))}
                     </select>

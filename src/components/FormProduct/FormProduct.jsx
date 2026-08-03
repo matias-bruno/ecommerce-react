@@ -5,7 +5,8 @@ const FormProduct = ({
     manejarCambio,
     manejarEnvio,
     manejarCambioImagen,
-    categorias,
+    categories,
+    loadingCategories = false,
     mode,
     cargando
 }) => {
@@ -58,9 +59,12 @@ const FormProduct = ({
                     value={datosForm.categorySlug}
                     onChange={manejarCambio}
                     required
+                    disabled={loadingCategories}
                 >
-                    <option value="" disabled>Seleccione una categoría</option>
-                    {categorias.map((categoria) => (
+                    <option value="" disabled>
+                        {loadingCategories ? 'Cargando categorías...' : 'Seleccione una categoría'}
+                    </option>
+                    {!loadingCategories && categorias.map((categoria) => (
                         <option key={categoria.slug} value={categoria.slug}>
                             {categoria.name}
                         </option>
