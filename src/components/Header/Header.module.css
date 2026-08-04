@@ -1,9 +1,15 @@
 .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
     background-color: var(--color-surface);
     border-bottom: 1px solid var(--color-border);
 }
 
 .headerContent {
+    position: relative;
     min-height: 70px;
     display: flex;
     flex-direction: column;
@@ -21,6 +27,15 @@
 .navbar {
     display: none;
     width: 100%;
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    right: 0;
+    z-index: 1001;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-sm);
 }
 
 .navbar.active {
@@ -33,7 +48,7 @@
     align-items: center;
     gap: 8px;
     width: 100%;
-    padding: 0;
+    padding: 12px;
     margin: 0;
     list-style: none;
 }
@@ -161,8 +176,13 @@
     }
 
     .navbar {
+        position: static;
         display: block;
         width: auto;
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+        background-color: transparent;
     }
 
     .header__menu {
@@ -170,6 +190,7 @@
         flex-wrap: wrap;
         width: auto;
         gap: 4px;
+        padding: 0;
     }
 
     .header__enlace {
