@@ -19,6 +19,17 @@ const Header = () => {
     const totalItems = getCartQuantity();
     const { user, logout } = useAuth();
 
+    const userActions = user ? (
+        <button onClick={() => { logout(); setMenuOpen(false) }} className={styles.logout__button}>
+            <span className={styles.navIcon}><LogoutIcon /></span>
+            Salir
+        </button>
+    ) : (
+        <Link to="/login" className={styles.header__enlace} onClick={() => setMenuOpen(false)}>
+            <span className={styles.navIcon}><UserIcon /></span>
+            Login
+        </Link>
+    );
 
     return (
         <header className={styles.header}>
@@ -28,72 +39,65 @@ const Header = () => {
                     {/* Por ahora lo dejamos que diga mi E-commerce */}
                     <Link className={styles.header__logo} to="/">Mi E-Commerce</Link>
 
-                    <SearchBar />
+                    <div className={styles.header__search}>
+                        <SearchBar />
+                    </div>
 
-                    <button
-                        className={styles.menu__button}
-                        onClick={() => setMenuOpen(!menuOpen)}
-                        aria-expanded={menuOpen}
-                        aria-label="Abrir menú"
-                    >
-                        {menuOpen ? '✕' : '☰'}
-                    </button>
-
-                    <nav className={`${styles.navbar} ${menuOpen ? styles.active : ''}`}>
-                        <ul className={styles.header__menu}>
-                            <li>
-                                <Link className={styles.header__enlace} to="/" onClick={() => setMenuOpen(false)}>
-                                    <span className={styles.navIcon}><HomeIcon /></span>
-                                    Inicio
-                                </Link>
-                            </li>
-                            <li>
-                                <Link className={styles.header__enlace} to="/productos" onClick={() => setMenuOpen(false)}>
-                                    <span className={styles.navIcon}><ProductsIcon /></span>
-                                    Productos
-                                </Link>
-                            </li>
-                            <li>
-                                <Link
-                                    className={styles.header__enlaceCarrito}
-                                    to="/carrito"
-                                    title="Carrito"
-                                    aria-label="Ver carrito"
-                                    onClick={() => setMenuOpen(false)}
-                                >
-                                    <span className={styles.cartIcon}>
-                                        <span className={styles.navIcon}><CartIcon /></span>
-                                        {totalItems > 0 && <span className={styles.badge}>{totalItems}</span>}
-                                    </span>
-                                    Carrito
-                                </Link>
-                            </li>
-                            {user ? (
-                                <>
-                                    {user.role === 'admin' && (
-                                        <li>
-                                            <Link to="/dashboard" className={styles.header__enlace} onClick={() => setMenuOpen(false)}>
-                                                <span className={styles.navIcon}><DashboardIcon /></span>
-                                                Gestion
-                                            </Link>
-                                        </li>)}
-                                    <li>
-                                        <button onClick={() => { logout(); setMenuOpen(false) }} className={styles.logout__button}>
-                                            <span className={styles.navIcon}><LogoutIcon /></span>
-                                            Salir
-                                        </button>
-                                    </li>
-                                </>
-                            ) : (
+                    <div className={styles.headerRight}>
+                        <nav className={`${styles.navbar} ${menuOpen ? styles.active : ''}`}>
+                            <div className={styles.header__searchDropdown}>
+                                <SearchBar />
+                            </div>
+                            <ul className={styles.header__menu}>
                                 <li>
-                                    <Link to="/login" className={styles.header__enlace} onClick={() => setMenuOpen(false)}>
-                                        <span className={styles.navIcon}><UserIcon /></span>
-                                        Login
+                                    <Link className={styles.header__enlace} to="/" onClick={() => setMenuOpen(false)}>
+                                        <span className={styles.navIcon}><HomeIcon /></span>
+                                        Inicio
                                     </Link>
                                 </li>
-                            )}
-                        </ul>
-                    </nav>
+                                <li>
+                                    <Link className={styles.header__enlace} to="/productos" onClick={() => setMenuOpen(false)}>
+                                        <span className={styles.navIcon}><ProductsIcon /></span>
+                                        Productos
+                                    </Link>
+                                </li>
+                                {user?.role === 'admin' && (
+                                    <li>
+                                        <Link to="/dashboard" className={styles.header__enlace} onClick={() => setMenuOpen(false)}>
+                                            <span className={styles.navIcon}><DashboardIcon /></span>
+                                            Gestion
+                                        </Link>
+                                    </li>
+                                )}
+                                <li className={styles.mobileOnly}>{userActions}</li>
+                            </ul>
+                        </nav>
+
+                        <div className={styles.headerActions}>
+                            <Link
+                                className={styles.cartLink}
+                                to="/carrito"
+                                title="Carrito"
+                                aria-label={totalItems > 0 ? `Ver carrito (${totalItems} productos)` : 'Ver carrito'}
+                                onClick={() => setMenuOpen(false)}
+                            >
+                                <span className={styles.cartIcon}>
+                                    <CartIcon />
+                                    {totalItems > 0 && <span className={styles.badge}>{totalItems}</span>}
+                                </span>
+                            </Link>
+                            <span className={styles.actionsUser}>{userActions}</span>
+                        </div>
+
+                        <button
+                            className={styles.menu__button}
+                            onClick={() => setMenuOpen(!menuOpen)}
+                            aria-expanded={menuOpen}
+                            aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'}
+                        >
+                            {menuOpen ? '✕' : '☰'}
+                        </button>
+                    </div>
                 </div>
             </Container>
         </header>
