@@ -64,7 +64,7 @@ const FormProduct = ({
                     <option value="" disabled>
                         {loadingCategories ? 'Cargando categorías...' : 'Seleccione una categoría'}
                     </option>
-                    {!loadingCategories && categorias.map((categoria) => (
+                    {!loadingCategories && categories.map((categoria) => (
                         <option key={categoria.slug} value={categoria.slug}>
                             {categoria.name}
                         </option>
