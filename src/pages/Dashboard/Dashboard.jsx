@@ -4,7 +4,7 @@ import styles from './Dashboard.module.css';
 import Container from "../../components/Container";
 import { useProducts } from '../../context/ProductsContext.jsx';
 import { useState } from 'react';
-import FormContainer from '../FormContainer.jsx';
+import FormContainer from '../../components/FormContainer.jsx';
 import usePagination from '../../hooks/usePagination.jsx';
 import Pagination from '../../components/Pagination/Pagination.jsx';
 

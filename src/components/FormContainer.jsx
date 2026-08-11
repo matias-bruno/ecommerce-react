@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import Swal from "sweetalert2";
-import FormProduct from '../components/FormProduct/FormProduct.jsx';
+import FormProduct from './FormProduct/FormProduct.jsx';
 import { useProducts } from '../context/ProductsContext.jsx';
 import useCategories from '../hooks/useCategories.jsx';
 
