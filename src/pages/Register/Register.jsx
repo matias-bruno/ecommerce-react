@@ -5,6 +5,8 @@ import { db } from '../../firebase/config'
 import Swal from 'sweetalert2';
 import { useAuth } from '../../context/AuthContext';
 import styles from './Register.module.css';
+import Seo from '../../components/Seo.jsx';
+import seoData from '../../data/seoData.js';
 
 const Register = () => {
     const [email, setEmail] = useState('');
@@ -106,6 +108,8 @@ const Register = () => {
     };
 
     return (
+        <>
+        <Seo {...seoData.register} />
         <section className={styles.registerPage}>
             <div className={styles.registerCard}>
                 <h2 className={styles.title}>Registro</h2>
@@ -157,6 +161,7 @@ const Register = () => {
                 <p className={styles.loginLink}>¿Ya tiene cuenta? <Link to="/login">Inicie sesión aquí</Link></p>
             </div>
         </section>
+        </>
     );
 };
 

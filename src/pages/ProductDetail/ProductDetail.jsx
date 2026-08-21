@@ -5,6 +5,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useCart } from "../../context/CartContext.jsx";
 import { useProducts } from "../../context/ProductsContext.jsx";
 import Swal from "sweetalert2";
+import Seo from "../../components/Seo.jsx";
 
 const ProductDetail = () => {
     const { id } = useParams();
@@ -59,6 +60,11 @@ const ProductDetail = () => {
     }
 
     return (
+        <>
+        <Seo
+            title={`${producto.name} | TecnoStore`}
+            description={producto.description}
+        />
         <Container>
             <div className={styles.productoDetalle}>
                 <div className={styles.productoDetalle__imagen}>
@@ -82,6 +88,7 @@ const ProductDetail = () => {
                 </div>
             </div>
         </Container>
+        </>
     );
 }
 

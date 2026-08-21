@@ -8,6 +8,8 @@ import { ITEMS_PER_PAGE } from '../constants/pagination.js'
 import usePagination from '../hooks/usePagination.jsx'
 import Pagination from '../components/Pagination/Pagination.jsx'
 import useCategories from '../hooks/useCategories.jsx'
+import Seo from '../components/Seo.jsx'
+import seoData from '../data/seoData';
 
 const ProductsPage = () => {
     const { products, loadingProducts, productsError } = useProducts();
@@ -152,6 +154,8 @@ const ProductsPage = () => {
     }
 
     return (
+        <>
+        <Seo {...seoData.products} />
         <Container>
             <ProductFilter
                 categories={categories}
@@ -175,6 +179,7 @@ const ProductsPage = () => {
                 prevPage={prevPage}
             />
         </Container>
+        </>
     );
 }
 

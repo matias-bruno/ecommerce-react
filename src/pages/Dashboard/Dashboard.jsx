@@ -7,6 +7,8 @@ import { useState } from 'react';
 import FormContainer from '../../components/FormContainer.jsx';
 import usePagination from '../../hooks/usePagination.jsx';
 import Pagination from '../../components/Pagination/Pagination.jsx';
+import Seo from '../../components/Seo.jsx';
+import seoData from '../../data/seoData';
 
 const Dashboard = () => {
     const navigate = useNavigate();
@@ -78,6 +80,8 @@ const Dashboard = () => {
     }
 
     return (
+        <>
+        <Seo { ...seoData.admin }/>
         <Container>
             <div className={styles.productsHeader}>
                 <h1>Lista de productos</h1>
@@ -166,6 +170,7 @@ const Dashboard = () => {
                 prevPage={prevPage}
             />
         </Container>
+        </>
     );
 }
 

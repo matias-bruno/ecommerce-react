@@ -6,6 +6,8 @@ import { useProducts } from '../context/ProductsContext.jsx'
 import { ITEMS_PER_PAGE } from '../constants/pagination.js'
 import usePagination from '../hooks/usePagination.jsx'
 import Pagination from '../components/Pagination/Pagination.jsx'
+import Seo from '../components/Seo.jsx'
+import seoData from '../data/seoData.js'
 
 const Search = () => {
     const { products } = useProducts();
@@ -34,6 +36,8 @@ const Search = () => {
     }, [normalizedQuery, resetPage]);
 
     return (
+        <>
+        <Seo {...seoData.search} />
         <Container>
             <ItemList
                 productos={currentItems}
@@ -47,6 +51,7 @@ const Search = () => {
                 prevPage={prevPage}
             />
         </Container>
+        </>
     );
 
 }

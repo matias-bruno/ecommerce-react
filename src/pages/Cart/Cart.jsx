@@ -4,6 +4,8 @@ import { useCart } from "../../context/CartContext";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from '../../context/AuthContext';
 import Swal from "sweetalert2";
+import Seo from '../../components/Seo';
+import seoData from '../../data/seoData.js';
 
 const Cart = () => {
     const { cart, addToCart, removeFromCart, clearCart, decreaseQuantity, getCartTotal } = useCart();
@@ -77,6 +79,8 @@ const Cart = () => {
     }
 
     return (
+        <>
+        <Seo { ...seoData.cart } />
         <Container>
             <div className={styles.carrito__contenido}>
                 <ul className={styles.carrito__items} id="carrito-items">
@@ -114,6 +118,7 @@ const Cart = () => {
                 </div>
             </div>
         </Container>
+        </>
     );
 }
 
