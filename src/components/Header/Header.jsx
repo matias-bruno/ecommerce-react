@@ -35,9 +35,7 @@ const Header = () => {
         <header className={styles.header}>
             <Container>
                 <div className={styles.headerContent}>
-                    {/* Aquí adentro de este enlace puede ir una imagen con el logo de la tienda */}
-                    {/* Por ahora lo dejamos que diga mi E-commerce */}
-                    <Link className={styles.header__logo} to="/">Mi E-Commerce</Link>
+                    <Link className={styles.header__logo} to="/">TecnoStore</Link>
 
                     <div className={styles.header__search}>
                         <SearchBar />

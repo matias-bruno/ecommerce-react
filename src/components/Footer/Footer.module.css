@@ -6,36 +6,26 @@
 .footerContent {
     padding: 40px 20px;
     display: flex;
-    justify-content: flex-start;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
     gap: 20px;
 }
 
 .footerTitle {
-  color: var(--color-primary);
+  color: var(--color-text-alt);
   margin-bottom: 15px;
 }
 
-.companyInfo {
-    flex: 1;
-    min-width: 300px;
+.companyInfo, .storeLinks, .socialLinks {
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
 }
 
-.companyInfo p {
+.companyInfo, .storeLinks, .socialLinks p {
     line-height: 1.7;
-}
-
-.teamSection {
-    flex: 2;
-    min-width: 300px;
-    text-align: center;
-}
-
-.cardsGrid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
-    justify-items: center;
 }
 
 .copy {
@@ -43,4 +33,12 @@
     color: var(--color-text);
     text-align: center;
     padding: 30px;
+}
+
+@media (min-width: 768px) {
+    .footerContent {
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: flex-start;
+    }
 }

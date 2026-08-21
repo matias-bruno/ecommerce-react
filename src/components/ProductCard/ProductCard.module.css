@@ -30,6 +30,7 @@
 
 .producto__enlace {
     color: var(--color-primary);
+    font-weight: 600;
 }
 
 .producto:hover {
