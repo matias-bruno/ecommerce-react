@@ -44,7 +44,7 @@ const Header = () => {
                     <div className={styles.headerRight}>
                         <nav className={`${styles.navbar} ${menuOpen ? styles.active : ''}`}>
                             <div className={styles.header__searchDropdown}>
-                                <SearchBar />
+                                <SearchBar onSearch={() => setMenuOpen(false)} />
                             </div>
                             <ul className={styles.header__menu}>
                                 <li>

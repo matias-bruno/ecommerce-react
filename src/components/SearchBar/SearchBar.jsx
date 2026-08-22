@@ -1,17 +1,19 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 import SearchIcon from '../../assets/icons/SearchIcon';
 import styles from './SearchBar.module.css';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
-const SearchBar = () => {
+const SearchBar = ({ onSearch }) => {
     const [input, setInput] = useState('');
+    const [lastSearch, setLastSearch] = useState(null);
     const navigate = useNavigate();
     const location = useLocation();
 
-    useEffect(() => {
+    if (location.search !== lastSearch) {
+        setLastSearch(location.search);
         const params = new URLSearchParams(location.search);
         setInput(params.get('query') || '');
-    }, [location.search]);
+    }
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -22,6 +24,8 @@ const SearchBar = () => {
         } else {
             navigate('/');
         }
+
+        if (onSearch) onSearch();
     };
 
     const handleChange = (event) => {
