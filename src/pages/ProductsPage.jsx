@@ -156,14 +156,10 @@ const ProductsPage = () => {
         return `Productos filtrados (${parts.join(' • ')})`;
     }, [normalizedQuery, selectedCategory, maxPrice, sortOption]);
 
-    const { currentItems, currentPage, totalPages, goToPage, nextPage, prevPage, resetPage } = usePagination({
+    const { currentItems, currentPage, totalPages, goToPage, nextPage, prevPage } = usePagination({
         items: filteredProducts,
         itemsPerPage: ITEMS_PER_PAGE,
     });
-
-    useEffect(() => {
-        resetPage();
-    }, [normalizedQuery, resetPage]);
 
     if (loadingProducts || loadingCategories) {
         return <p>Cargando productos y categorías, por favor espere...</p>;

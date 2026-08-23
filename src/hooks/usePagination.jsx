@@ -1,19 +1,31 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
-// Paginación para usar con el contexto de productos, sin hacer peticiones al backend
-
-const usePagination = ({ items = [], itemsPerPage = 6, initialPage = 1 } = {}) => {
-    const [currentPage, setCurrentPage] = useState(initialPage);
+const usePagination = ({ items = [], itemsPerPage = 6, initialPage = 1, pageParam = 'page' } = {}) => {
+    const [searchParams, setSearchParams] = useSearchParams();
 
     const totalPages = Math.max(1, Math.ceil(items.length / itemsPerPage));
 
-    useEffect(() => {
-        if (currentPage > totalPages) {
-            setCurrentPage(totalPages);
-        }
-    }, [currentPage, totalPages]);
+    const rawPage = Number(searchParams.get(pageParam));
+    const safeCurrentPage = Number.isInteger(rawPage) && rawPage >= 1
+        ? Math.min(rawPage, totalPages)
+        : initialPage;
 
-    const safeCurrentPage = Math.min(Math.max(currentPage, 1), totalPages);
+    useEffect(() => {
+        if (!searchParams.has(pageParam)) {
+            return;
+        }
+
+        const parsed = Number(searchParams.get(pageParam));
+
+        if (!Number.isInteger(parsed) || parsed < 1 || parsed > totalPages) {
+            setSearchParams((prev) => {
+                const params = new URLSearchParams(prev);
+                params.delete(pageParam);
+                return params;
+            }, { replace: true });
+        }
+    }, [searchParams, totalPages, pageParam, setSearchParams]);
 
     const currentItems = useMemo(() => {
         const startIndex = (safeCurrentPage - 1) * itemsPerPage;
@@ -21,13 +33,19 @@ const usePagination = ({ items = [], itemsPerPage = 6, initialPage = 1 } = {}) =
     }, [items, safeCurrentPage, itemsPerPage]);
 
     const goToPage = useCallback((page) => {
-        const nextPage = Math.min(Math.max(page, 1), totalPages);
-        setCurrentPage(nextPage);
-    }, [totalPages]);
+        const target = Math.min(Math.max(page, 1), totalPages);
+        setSearchParams((prev) => {
+            const params = new URLSearchParams(prev);
+            if (target === initialPage) {
+                params.delete(pageParam);
+            } else {
+                params.set(pageParam, String(target));
+            }
+            return params;
+        });
+    }, [totalPages, initialPage, pageParam, setSearchParams]);
 
-    const resetPage = useCallback(() => {
-        setCurrentPage(1);
-    }, []);
+    const resetPage = useCallback(() => goToPage(initialPage), [goToPage, initialPage]);
 
     const nextPage = useCallback(() => goToPage(safeCurrentPage + 1), [goToPage, safeCurrentPage]);
     const prevPage = useCallback(() => goToPage(safeCurrentPage - 1), [goToPage, safeCurrentPage]);
