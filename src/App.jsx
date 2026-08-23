@@ -8,8 +8,6 @@ import Dashboard from './pages/Dashboard/Dashboard';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import ProtectedRoute from './components/ProtectedRoute';
-import SearchBar from './components/SearchBar/SearchBar';
-import Search from './pages/Search'
 
 
 const App = () => {
@@ -31,7 +29,6 @@ const App = () => {
         />
         <Route path="/login" element={<Login />} />
         <Route path="/registro" element={<Register />} />
-        <Route path="/busqueda" element={<Search />} />
       </Route>
     </Routes>
   )

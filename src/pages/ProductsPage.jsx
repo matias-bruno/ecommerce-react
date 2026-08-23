@@ -19,6 +19,7 @@ const ProductsPage = () => {
     const [selectedCategory, setSelectedCategory] = useState('all');
     const [maxPrice, setMaxPrice] = useState('');
     const [sortOption, setSortOption] = useState('default');
+    const [query, setQuery] = useState('');
     const { categories, loadingCategories } = useCategories();
 
     const categorySlugs = useMemo( () => categories.map((category) => category.slug), [categories]);
@@ -31,9 +32,12 @@ const ProductsPage = () => {
     useEffect(() => {
         setMaxPrice(searchParams.get('maxPrice') ?? '');
         setSortOption(searchParams.get('sort') ?? 'default');
+        setQuery(searchParams.get('query') ?? '');
     }, [searchParams]);
 
-    const buildProductsPath = (nextCategory, nextMaxPrice, nextSort) => {
+    const normalizedQuery = query.trim().toLowerCase();
+
+    const buildProductsPath = (nextCategory, nextMaxPrice, nextSort, nextQuery) => {
         const params = new URLSearchParams();
 
         if (nextMaxPrice !== '') {
@@ -42,6 +46,10 @@ const ProductsPage = () => {
 
         if (nextSort !== 'default') {
             params.set('sort', nextSort);
+        }
+
+        if (nextQuery !== '') {
+            params.set('query', nextQuery);
         }
 
         const basePath = nextCategory === 'all' ? '/productos' : `/productos/${nextCategory}`;
@@ -53,19 +61,19 @@ const ProductsPage = () => {
     const handleCategoryChange = (event) => {
         const nextCategory = event.target.value;
         setSelectedCategory(nextCategory);
-        navigate(buildProductsPath(nextCategory, maxPrice, sortOption));
+        navigate(buildProductsPath(nextCategory, maxPrice, sortOption, query));
     };
 
     const handleMaxPriceChange = (event) => {
         const nextMaxPrice = event.target.value;
         setMaxPrice(nextMaxPrice);
-        navigate(buildProductsPath(selectedCategory, nextMaxPrice, sortOption));
+        navigate(buildProductsPath(selectedCategory, nextMaxPrice, sortOption, query));
     };
 
     const handleSortChange = (event) => {
         const nextSortOption = event.target.value;
         setSortOption(nextSortOption);
-        navigate(buildProductsPath(selectedCategory, maxPrice, nextSortOption));
+        navigate(buildProductsPath(selectedCategory, maxPrice, nextSortOption, query));
     };
 
     const handleClearFilters = () => {
@@ -77,6 +85,10 @@ const ProductsPage = () => {
 
     const filteredProducts = useMemo(() => {
         let result = [...products];
+
+        if (normalizedQuery !== '') {
+            result = result.filter((product) => product.name.toLowerCase().includes(normalizedQuery));
+        }
 
         if (selectedCategory !== 'all') {
             result = result.filter((product) => product.categorySlug === selectedCategory);
@@ -107,10 +119,14 @@ const ProductsPage = () => {
         }
 
         return result;
-    }, [products, selectedCategory, maxPrice, sortOption]);
+    }, [products, normalizedQuery, selectedCategory, maxPrice, sortOption]);
 
     const mensaje = useMemo(() => {
         const parts = [];
+
+        if (normalizedQuery !== '') {
+            parts.push(`Resultados para: "${normalizedQuery}"`);
+        }
 
         if (selectedCategory !== 'all') {
             parts.push(`Categoría: ${selectedCategory}`);
@@ -138,12 +154,16 @@ const ProductsPage = () => {
         }
 
         return `Productos filtrados (${parts.join(' • ')})`;
-    }, [selectedCategory, maxPrice, sortOption]);
+    }, [normalizedQuery, selectedCategory, maxPrice, sortOption]);
 
-    const { currentItems, currentPage, totalPages, goToPage, nextPage, prevPage } = usePagination({
+    const { currentItems, currentPage, totalPages, goToPage, nextPage, prevPage, resetPage } = usePagination({
         items: filteredProducts,
         itemsPerPage: ITEMS_PER_PAGE,
     });
+
+    useEffect(() => {
+        resetPage();
+    }, [normalizedQuery, resetPage]);
 
     if (loadingProducts || loadingCategories) {
         return <p>Cargando productos y categorías, por favor espere...</p>;

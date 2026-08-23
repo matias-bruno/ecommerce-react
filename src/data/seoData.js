@@ -11,12 +11,6 @@ const seoData = {
       "Explorá nuestro catálogo de productos tecnológicos y accesorios.",
   },
 
-  search: {
-    title: "Buscar productos | TecnoStore",
-    description:
-      "Buscá productos tecnológicos y accesorios en TecnoStore.",
-  },
-
   cart: {
     title: "Carrito | TecnoStore",
     description:

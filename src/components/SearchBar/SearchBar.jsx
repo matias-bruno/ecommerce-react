@@ -20,9 +20,9 @@ const SearchBar = ({ onSearch }) => {
         const value = input.trim();
 
         if (value) {
-            navigate(`/busqueda?query=${encodeURIComponent(value)}`);
+            navigate(`/productos?query=${encodeURIComponent(value)}`);
         } else {
-            navigate('/');
+            navigate('/productos');
         }
 
         if (onSearch) onSearch();
