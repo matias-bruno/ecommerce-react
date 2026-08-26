@@ -31,6 +31,11 @@ const seoData = {
   admin: {
     title: "Gestión de productos | TecnoStore",
     description: "Administrá los productos de TecnoStore.",
+  },
+  
+  notFound: {
+    title: "Página no encontrada | TecnoStore",
+    description: "La página que estás buscando no existe.",
   }
   
 };
