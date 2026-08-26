@@ -8,6 +8,7 @@ import Dashboard from './pages/Dashboard/Dashboard';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import ProtectedRoute from './components/ProtectedRoute';
+import NotFound from './pages/NotFound/NotFound';
 
 
 const App = () => {
@@ -29,6 +30,7 @@ const App = () => {
         />
         <Route path="/login" element={<Login />} />
         <Route path="/registro" element={<Register />} />
+        <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
   )
