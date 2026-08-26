@@ -9,6 +9,7 @@ import usePagination from '../../hooks/usePagination.jsx';
 import Pagination from '../../components/Pagination/Pagination.jsx';
 import Seo from '../../components/Seo.jsx';
 import seoData from '../../data/seoData';
+import { formatPrice } from '../../utils/formatPrice';
 
 const Dashboard = () => {
     const navigate = useNavigate();
@@ -137,7 +138,7 @@ const Dashboard = () => {
                                         : producto.name}
                                 </td>
                                 <td><img src={producto.imageUrl} alt={producto.name} /></td>
-                                <td className={styles.numeric}>${producto.price}</td>
+                                <td className={styles.numeric}>{formatPrice(producto.price)}</td>
                                 <td className={styles.numeric}>{producto.stock}</td>
                                 <td
                                     className={styles.truncate}

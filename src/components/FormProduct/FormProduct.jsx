@@ -32,9 +32,10 @@ const FormProduct = ({
                     id="price"
                     name="price"
                     value={datosForm.price}
-                    placeholder="Ej. 35"
+                    placeholder="Ej. 35.50"
                     onChange={manejarCambio}
                     min={0}
+                    step="0.01"
                     required
                 />
             </div>

@@ -6,6 +6,7 @@ import { useAuth } from '../../context/AuthContext';
 import Swal from "sweetalert2";
 import Seo from '../../components/Seo';
 import seoData from '../../data/seoData.js';
+import { formatPrice } from '../../utils/formatPrice';
 
 const Cart = () => {
     const { cart, addToCart, removeFromCart, clearCart, decreaseQuantity, getCartTotal } = useCart();
@@ -90,7 +91,7 @@ const Cart = () => {
                                 <img src={item.imageUrl} alt={item.name} className={styles.carrito__itemImagen} />
                                 <div className={styles.carrito__itemInfo}>
                                     <p className="carrito__itemNombre">{item.name}</p>
-                                    <p className="carrito__itemPrecio">${item.price}</p>
+                                    <p className="carrito__itemPrecio">{formatPrice(item.price)}</p>
                                     <div className={styles.carrito__itemCantidad}>
                                         <button onClick={() => decreaseQuantity(item.id)} className={styles.carrito__cantidadMenos}>-</button>
                                         <span>{item.quantity}</span>
@@ -106,7 +107,7 @@ const Cart = () => {
                 </ul>
                 <div className={styles.carrito__resumen}>
                     <h2 className={styles.carrito__resumenTitulo}>Resumen</h2>
-                    <p className={styles.carrito__resumenTotal}>Total: <span id="carritoTotal">${totalCart.toFixed(2)}</span></p>
+                    <p className={styles.carrito__resumenTotal}>Total: <span id="carritoTotal">{formatPrice(totalCart)}</span></p>
                     <button onClick={handleClear} className={styles.carrito__boton + " " + styles.carrito__botonSecundario}>Vaciar Carrito</button>
                     <button
                         onClick={handlePurchase}

@@ -83,6 +83,7 @@ const FormContainer = ({ closeModal, productEditing = null }) => {
 
                 const completeProduct = {
                     ...datosForm,
+                    price: Number(datosForm.price),
                     imageUrl: finalImageUrl
                 };
 
@@ -104,6 +105,7 @@ const FormContainer = ({ closeModal, productEditing = null }) => {
 
                 const updatedProduct = {
                     ...datosForm,
+                    price: Number(datosForm.price),
                     imageUrl: finalImageUrl
                 };
 

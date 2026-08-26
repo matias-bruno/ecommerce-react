@@ -6,6 +6,7 @@ import { useCart } from "../../context/CartContext.jsx";
 import { useProducts } from "../../context/ProductsContext.jsx";
 import Swal from "sweetalert2";
 import Seo from "../../components/Seo.jsx";
+import { formatPrice } from '../../utils/formatPrice';
 
 const ProductDetail = () => {
     const { id } = useParams();
@@ -72,7 +73,7 @@ const ProductDetail = () => {
                 </div>
                 <div className={styles.productoDetalle__info}>
                     <h1>{producto.name}</h1>
-                    <p className={styles.productoDetalle__precio}>${producto.price}</p>
+                    <p className={styles.productoDetalle__precio}>{formatPrice(producto.price)}</p>
                     <p className={styles.productoDetalle__descripcion}>{producto.description}</p>
                     {
                         isInCart(producto.id) ? (

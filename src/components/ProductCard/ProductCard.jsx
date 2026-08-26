@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { useFavorites } from '../../hooks/useFavorites';
+import { formatPrice } from '../../utils/formatPrice';
 
 const ProductCard = ({ id, nombre, precio, imagen }) => {
     const { user } = useAuth();
@@ -25,7 +26,7 @@ const ProductCard = ({ id, nombre, precio, imagen }) => {
                 {nombre}
             </p>
             <p className={styles.producto__precio}>
-                ${precio}
+                {formatPrice(precio)}
             </p>
             <Link to={`/producto/${id}`} className={styles.producto__enlace}>Ver Producto</Link>
 
