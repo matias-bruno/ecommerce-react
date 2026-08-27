@@ -20,6 +20,7 @@
 
 .carrito__item {
   display: flex;
+  flex-direction: column;
   align-items: center;
   gap: 20px;
   padding: 20px;
@@ -31,32 +32,44 @@
 }
 
 .carrito__itemImagen {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
+  width: 100%;
+  height: 220px;
+  object-fit: contain;
+  background-color: var(--color-bg);
   border-radius: 8px;
 }
 
 .carrito__itemInfo {
   flex: 1;
+  width: 100%;
+  text-align: center;
 }
 
 .carrito__itemNombre {
   font-size: 1.1rem;
   font-weight: 600;
-  margin: 0 0 8px;
+  line-height: 1.4;
+  margin: 0 0 12px;
 }
 
 .carrito__itemPrecio {
   font-size: 1rem;
   color: var(--color-primary);
   font-weight: 700;
-  margin: 0 0 8px;
+  margin: 0 0 12px;
+}
+
+.carrito__itemSubtotal {
+  font-size: 0.95rem;
+  color: var(--color-text);
+  font-weight: 700;
+  margin: 0 0 12px;
 }
 
 .carrito__itemCantidad {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 12px;
 }
 
@@ -94,6 +107,13 @@
   background-color: var(--color-secondary-hover);
   transform: translateY(-1px);
   box-shadow: var(--shadow-sm);
+}
+
+.carrito__itemCantidad button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
 }
 
 .carrito__itemCantidad span {
@@ -177,29 +197,31 @@
   transform: translateY(-1px);
 }
 
-.carrito__vacio {
-  text-align: center;
-  font-size: 1.2rem;
-  color: var(--color-text-muted);
-  margin: 60px 0;
-}
-
 .emptyState {
+  min-height: 55vh;
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 80px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  padding: 60px 20px;
 }
 
 .emptyState h2 {
-  margin-bottom: 10px;
+  margin-bottom: 14px;
+  font-size: 1.8rem;
 }
 
 .emptyState p {
   color: var(--color-secondary);
-  margin-bottom: 20px;
+  margin-bottom: 28px;
+  line-height: 1.5;
 }
 
 .emptyState button {
-  max-width: 200px;
+  max-width: 220px;
 }
 
 @media screen and (max-width: 768px) {
@@ -212,15 +234,24 @@
   }
 }
 
-@media screen and (max-width: 576px) {
+@media screen and (min-width: 577px) {
   .carrito__item {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;
+    align-items: center;
   }
 
   .carrito__itemImagen {
-    width: 100%;
-    height: 200px;
+    width: 100px;
+    height: 100px;
+    flex-shrink: 0;
+  }
+
+  .carrito__itemInfo {
+    text-align: left;
+  }
+
+  .carrito__itemCantidad {
+    justify-content: flex-start;
   }
 
   .carrito__titulo {

@@ -90,12 +90,26 @@ const Cart = () => {
                             <li key={item.id} className={styles.carrito__item}>
                                 <img src={item.imageUrl} alt={item.name} className={styles.carrito__itemImagen} />
                                 <div className={styles.carrito__itemInfo}>
-                                    <p className="carrito__itemNombre">{item.name}</p>
-                                    <p className="carrito__itemPrecio">{formatPrice(item.price)}</p>
+                                    <p className={styles.carrito__itemNombre}>{item.name}</p>
+                                    <p className={styles.carrito__itemPrecio}>{formatPrice(item.price)}</p>
+                                    <p className={styles.carrito__itemSubtotal}>
+                                        Subtotal: {formatPrice(item.price * item.quantity)}
+                                    </p>
                                     <div className={styles.carrito__itemCantidad}>
-                                        <button onClick={() => decreaseQuantity(item.id)} className={styles.carrito__cantidadMenos}>-</button>
+                                        <button
+                                            onClick={() => decreaseQuantity(item.id)}
+                                            className={styles.carrito__cantidadMenos}
+                                            disabled={item.quantity === 1}>
+                                            -
+                                        </button>
                                         <span>{item.quantity}</span>
-                                        <button onClick={() => addToCart(item)} className={styles.carrito__cantidadMas}>+</button>
+                                        <button
+                                            onClick={() => addToCart(item)}
+                                            className={styles.carrito__cantidadMas}
+                                            disabled={item.quantity === item.stock}
+                                        >
+                                            +
+                                        </button>
                                     </div>
                                 </div>
                                 <button onClick={() => handleRemove(item)} className={styles.carrito__itemEliminar}>
