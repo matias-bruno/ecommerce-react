@@ -1,16 +1,7 @@
-import { useState, useContext, createContext, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { db } from '../firebase/config';
 import { collection, getDocs, doc, getDoc, addDoc, deleteDoc, updateDoc } from 'firebase/firestore';
-
-const ProductsContext = createContext();
-
-export const useProducts = () => {
-    const context = useContext(ProductsContext);
-    if (!context) {
-        throw new Error('useProducts debe ser utilizado dentro de un ProductsProvider');
-    }
-    return context;
-};
+import { ProductsContext } from './ProductsContextUtils.jsx';
 
 export const ProductsProvider = ({ children }) => {
     const [products, setProducts] = useState([]);
@@ -38,7 +29,7 @@ export const ProductsProvider = ({ children }) => {
         loadProducts();
     }, []);
 
-    const getProductById = async (id) => {
+    const getProductById = useCallback(async (id) => {
         const productoExistente = products.find((product) => product.id === id);
         if (productoExistente) {
             return productoExistente;
@@ -49,7 +40,7 @@ export const ProductsProvider = ({ children }) => {
             return { ...productoSnap.data(), id: productoSnap.id };
         }
         throw new Error('Producto no encontrado');
-    };
+    }, [products]);
 
     const createProduct = async (newProduct) => {
         const productsCollection = collection(db, 'products');

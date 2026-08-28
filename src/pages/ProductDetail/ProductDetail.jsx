@@ -2,8 +2,8 @@ import Container from "../../components/Container.jsx";
 import styles from './ProductDetail.module.css';
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { useCart } from "../../context/CartContext.jsx";
-import { useProducts } from "../../context/ProductsContext.jsx";
+import { useCart } from "../../context/CartContextUtils.jsx";
+import { useProducts } from "../../context/ProductsContextUtils.jsx";
 import Swal from "sweetalert2";
 import Seo from "../../components/Seo.jsx";
 import { formatPrice } from '../../utils/formatPrice';
@@ -32,7 +32,7 @@ const ProductDetail = () => {
         };
 
         fetchProducto();
-    }, [id]);
+    }, [id, getProductById]);
 
     if (cargando) {
         return <h2>Cargando detalle del producto...</h2>;

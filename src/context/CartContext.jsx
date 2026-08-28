@@ -1,14 +1,5 @@
-import { useState, useContext, createContext } from 'react';
-
-const CartContext = createContext();
-
-export const useCart = () => {
-    const context = useContext(CartContext);
-    if (!context) {
-        throw new Error('useCart debe ser utilizado dentro de un CartProvider');
-    }
-    return context;
-}
+import { useState } from 'react';
+import { CartContext } from './CartContextUtils.jsx';
 
 export const CartProvider = ({ children }) => {
     const [cart, setCart] = useState([]);

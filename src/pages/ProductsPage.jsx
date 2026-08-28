@@ -1,9 +1,9 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import ItemList from '../components/ItemList/ItemList.jsx'
 import Container from '../components/Container.jsx'
 import ProductFilter from '../components/ProductFilter/ProductFilter.jsx';
-import { useProducts } from '../context/ProductsContext.jsx'
+import { useProducts } from '../context/ProductsContextUtils.jsx'
 import { ITEMS_PER_PAGE } from '../constants/pagination.js'
 import usePagination from '../hooks/usePagination.jsx'
 import Pagination from '../components/Pagination/Pagination.jsx'
@@ -16,24 +16,13 @@ const ProductsPage = () => {
     const { categorySlug } = useParams();
     const navigate = useNavigate();
     const [searchParams] = useSearchParams();
-    const [selectedCategory, setSelectedCategory] = useState('all');
-    const [maxPrice, setMaxPrice] = useState('');
-    const [sortOption, setSortOption] = useState('default');
-    const [query, setQuery] = useState('');
     const { categories, loadingCategories } = useCategories();
 
-    const categorySlugs = useMemo( () => categories.map((category) => category.slug), [categories]);
-
-    useEffect(() => {
-        const normalizedCategory = categorySlug && categorySlugs.includes(categorySlug) ? categorySlug : 'all';
-        setSelectedCategory(normalizedCategory);
-    }, [categorySlug, categories]);
-
-    useEffect(() => {
-        setMaxPrice(searchParams.get('maxPrice') ?? '');
-        setSortOption(searchParams.get('sort') ?? 'default');
-        setQuery(searchParams.get('query') ?? '');
-    }, [searchParams]);
+    const categorySlugs = useMemo(() => categories.map((category) => category.slug), [categories]);
+    const selectedCategory = categorySlug && categorySlugs.includes(categorySlug) ? categorySlug : 'all';
+    const maxPrice = searchParams.get('maxPrice') ?? '';
+    const sortOption = searchParams.get('sort') ?? 'default';
+    const query = searchParams.get('query') ?? '';
 
     const normalizedQuery = query.trim().toLowerCase();
 
@@ -60,26 +49,20 @@ const ProductsPage = () => {
 
     const handleCategoryChange = (event) => {
         const nextCategory = event.target.value;
-        setSelectedCategory(nextCategory);
         navigate(buildProductsPath(nextCategory, maxPrice, sortOption, query));
     };
 
     const handleMaxPriceChange = (event) => {
         const nextMaxPrice = event.target.value;
-        setMaxPrice(nextMaxPrice);
         navigate(buildProductsPath(selectedCategory, nextMaxPrice, sortOption, query));
     };
 
     const handleSortChange = (event) => {
         const nextSortOption = event.target.value;
-        setSortOption(nextSortOption);
         navigate(buildProductsPath(selectedCategory, maxPrice, nextSortOption, query));
     };
 
     const handleClearFilters = () => {
-        setSelectedCategory('all');
-        setMaxPrice('');
-        setSortOption('default');
         navigate('/productos');
     };
 

@@ -3,7 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { doc, setDoc } from 'firebase/firestore';
 import { db } from '../../firebase/config'
 import Swal from 'sweetalert2';
-import { useAuth } from '../../context/AuthContext';
+import { useAuth } from '../../context/AuthContextUtils.jsx';
 import styles from './Register.module.css';
 import Seo from '../../components/Seo.jsx';
 import seoData from '../../data/seoData.js';

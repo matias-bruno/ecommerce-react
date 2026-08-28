@@ -1,4 +1,4 @@
-import { useState, useEffect, createContext, useContext } from 'react';
+import { useState, useEffect } from 'react';
 import {
     getAuth,
     onAuthStateChanged,
@@ -8,16 +8,7 @@ import {
 } from 'firebase/auth';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../firebase/config';
-
-const AuthContext = createContext();
-
-export const useAuth = () => {
-    const context = useContext(AuthContext);
-    if (!context) {
-        throw new Error('useAuth debe ser utilizado dentro de un AuthProvider');
-    }
-    return context;
-}
+import { AuthContext } from './AuthContextUtils.jsx';
 
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
@@ -52,7 +43,7 @@ export const AuthProvider = ({ children }) => {
             setLoading(false);
         });
         return () => unsubscribe();
-    }, [auth, db]);
+    }, [auth]);
     // Creamos el objeto value, para pasar todo desde el
     const value = {
         user, loading, signup, login, logout

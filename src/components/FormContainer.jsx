@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Swal from "sweetalert2";
 import FormProduct from './FormProduct/FormProduct.jsx';
-import { useProducts } from '../context/ProductsContext.jsx';
+import { useProducts } from '../context/ProductsContextUtils.jsx';
 import useCategories from '../hooks/useCategories.jsx';
 
 const FormContainer = ({ closeModal, productEditing = null }) => {
@@ -13,28 +13,20 @@ const FormContainer = ({ closeModal, productEditing = null }) => {
         categorySlug: '',
         imageUrl: ''
     };
-    const [datosForm, setDatosForm] = useState(datosIniciales);
+    const [datosForm, setDatosForm] = useState(() => productEditing ? {
+        name: productEditing.name,
+        price: productEditing.price,
+        stock: productEditing.stock,
+        description: productEditing.description,
+        categorySlug: productEditing.categorySlug,
+        imageUrl: productEditing.imageUrl
+    } : datosIniciales);
     const [imageFile, setImageFile] = useState(null);
     const { categories, loadingCategories } = useCategories();
     const [cargando, setCargando] = useState(false);
     const { createProduct, editProduct } = useProducts();
 
     const mode = productEditing ? "editing" : "adding";
-
-    // esto sirve solo para el modo editar
-    // Recibimos el producto desde la prop
-    useEffect(() => {
-        if (productEditing) {
-            setDatosForm({
-                name: productEditing.name,
-                price: productEditing.price,
-                stock: productEditing.stock,
-                description: productEditing.description,
-                categorySlug: productEditing.categorySlug,
-                imageUrl: productEditing.imageUrl
-            });
-        }
-    }, [productEditing]);
 
     const manejarCambio = (evento) => {
         const { name, value } = evento.target;

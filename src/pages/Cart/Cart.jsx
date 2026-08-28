@@ -1,8 +1,8 @@
 import Container from "../../components/Container";
 import styles from './Cart.module.css';
-import { useCart } from "../../context/CartContext";
+import { useCart } from "../../context/CartContextUtils.jsx";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from '../../context/AuthContext';
+import { useAuth } from '../../context/AuthContextUtils.jsx';
 import Swal from "sweetalert2";
 import Seo from '../../components/Seo';
 import seoData from '../../data/seoData.js';
@@ -106,7 +106,7 @@ const Cart = () => {
                                         <button
                                             onClick={() => addToCart(item)}
                                             className={styles.carrito__cantidadMas}
-                                            disabled={item.quantity === item.stock}
+                                            disabled={item.quantity == item.stock}
                                         >
                                             +
                                         </button>

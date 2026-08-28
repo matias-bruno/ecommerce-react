@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import styles from './Login.module.css';
-import { useAuth } from '../../context/AuthContext';
+import { useAuth } from '../../context/AuthContextUtils.jsx';
 import { useNavigate, Link } from 'react-router-dom';
 import Seo from '../../components/Seo.jsx';
 import seoData from '../../data/seoData.js';

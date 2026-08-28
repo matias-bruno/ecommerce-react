@@ -1,6 +1,6 @@
 import ItemList from './ItemList/ItemList'
 import Container from './Container'
-import { useProducts } from '../context/ProductsContext.jsx'
+import { useProducts } from '../context/ProductsContextUtils.jsx'
 
 const ProductsPreview = ({ mensaje, categoria, cantidad }) => {
     const { products, loadingProducts, productsError } = useProducts();

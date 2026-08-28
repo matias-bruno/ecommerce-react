@@ -1,8 +1,7 @@
-import { useNavigate } from 'react-router-dom';
 import Swal from "sweetalert2";
 import styles from './Dashboard.module.css';
 import Container from "../../components/Container";
-import { useProducts } from '../../context/ProductsContext.jsx';
+import { useProducts } from '../../context/ProductsContextUtils.jsx';
 import { useState } from 'react';
 import FormContainer from '../../components/FormContainer.jsx';
 import usePagination from '../../hooks/usePagination.jsx';
@@ -12,7 +11,6 @@ import seoData from '../../data/seoData';
 import { formatPrice } from '../../utils/formatPrice';
 
 const Dashboard = () => {
-    const navigate = useNavigate();
     const { products, loadingProducts, productsError, deleteProduct } = useProducts();
     const { currentItems, currentPage, totalPages, goToPage, nextPage, prevPage } = usePagination({
         items: products,
@@ -62,7 +60,7 @@ const Dashboard = () => {
                     showConfirmButton: false,
                     timer: 3000
                 });
-            } catch (error) {
+            } catch {
                 Swal.fire({
                     title: "Error",
                     text: "No se pudo eliminar el producto.",
@@ -106,6 +104,7 @@ const Dashboard = () => {
                                 &times;
                             </button>
                             <FormContainer
+                                key={productEditing ? `edit-${productEditing.id}` : 'add'}
                                 closeModal={closeModal}
                                 productEditing={productEditing}
                             />
