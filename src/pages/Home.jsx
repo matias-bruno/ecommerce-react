@@ -1,5 +1,5 @@
 import Hero from '../components/Hero/Hero'
-import ProductsPreview from '../components/ProductsPreview';
+import ProductsPreview from '../components/ProductsPreview/ProductsPreview';
 import Seo from '../components/Seo';
 import seoData from '../data/seoData';
 

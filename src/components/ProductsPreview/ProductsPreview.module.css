@@ -1,0 +1,58 @@
+.wrapper {
+    margin: 2rem 0;
+}
+
+.headerProductos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin: 24px 0 8px;
+    padding: 0 4px;
+}
+
+.headerProductos__titulo {
+    text-align: center;
+    font-weight: 700;
+    color: var(--color-text);
+}
+
+.listaProductos {
+    list-style: none;
+    padding: 16px 0 32px;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    justify-content: center;
+    justify-items: center;
+}
+
+.linkWrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.linkButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8rem 1.35rem;
+    border-radius: var(--radius-lg);
+    background-color: var(--color-primary);
+    color: var(--color-on-primary);
+    text-decoration: none;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition-base), box-shadow var(--transition-base), background-color var(--transition-base);
+}
+
+.linkButton:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+    color: var(--color-on-primary);
+    background-color: var(--color-primary-hover);
+}
