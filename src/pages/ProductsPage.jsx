@@ -25,6 +25,10 @@ const ProductsPage = () => {
     const query = searchParams.get('query') ?? '';
 
     const normalizedQuery = query.trim().toLowerCase();
+    const hasActiveFilters = selectedCategory !== 'all'
+        || maxPrice !== ''
+        || sortOption !== 'default'
+        || normalizedQuery !== '';
 
     const buildProductsPath = (nextCategory, nextMaxPrice, nextSort, nextQuery) => {
         const params = new URLSearchParams();
@@ -165,6 +169,7 @@ const ProductsPage = () => {
                 onMaxPriceChange={handleMaxPriceChange}
                 onSortChange={handleSortChange}
                 onClearFilters={handleClearFilters}
+                hasActiveFilters={hasActiveFilters}
             />
             <ItemList
                 productos={currentItems}

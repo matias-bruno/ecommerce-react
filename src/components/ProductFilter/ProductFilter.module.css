@@ -1,10 +1,46 @@
+.filtrosWrapper {
+    margin: 24px 0 8px;
+}
+
+.filtrosActions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: flex-end;
+}
+
+.botonMostrar,
+.botonLimpiar {
+    border: none;
+    border-radius: var(--radius-sm);
+    padding: 12px 16px;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+    transition: background-color var(--transition-base), transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.botonMostrar {
+    background-color: var(--color-surface);
+    color: var(--color-primary);
+    border: 1px solid var(--color-primary);
+}
+
+.botonMostrar:hover,
+.botonMostrar:focus-visible {
+    background-color: var(--color-surface);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+
 .filtrosPanel {
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
     justify-content: space-between;
     align-items: flex-end;
-    margin: 24px 0 8px;
+    margin: 12px 0 0;
     padding: 24px;
     border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
@@ -51,25 +87,21 @@
 }
 
 .botonLimpiar {
-    border: none;
-    border-radius: var(--radius-sm);
-    padding: 12px 16px;
     background-color: var(--color-primary);
     color: var(--color-on-primary);
-    font-weight: 600;
-    cursor: pointer;
-    box-shadow: var(--shadow-sm);
-    transition: background-color var(--transition-base), transform var(--transition-base), box-shadow var(--transition-base);
 }
 
-.botonLimpiar:hover,
-.botonLimpiar:focus-visible {
+.botonLimpiar:not(:disabled):hover,
+.botonLimpiar:not(:disabled):focus-visible {
     background-color: var(--color-primary-hover);
     transform: translateY(-1px);
     box-shadow: var(--shadow-md);
 }
 
-button.botonLimpiar {
-    font: inherit;
+.botonLimpiar:disabled {
+    background-color: var(--color-border);
+    color: var(--color-text-muted, #777);
+    cursor: not-allowed;
+    box-shadow: none;
 }
 
