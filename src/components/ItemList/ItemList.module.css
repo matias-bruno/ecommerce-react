@@ -31,3 +31,21 @@
   text-align: center;
   padding: 24px;
 }
+
+@media (max-width: 480px) {
+    .listaProductos {
+        display: flex;
+        flex-direction: column;
+    }
+    .listaProductos > li {
+        margin: 0 auto;
+        width: min(100%,250px);
+    }
+    .headerProductos {
+        justify-content: center;
+    }
+    .headerProductos__titulo {
+        width: 100%;
+        text-align: center;
+    }
+}
